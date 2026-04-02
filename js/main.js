@@ -701,14 +701,30 @@
       var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       recognition = new SpeechRecognition();
       recognition.continuous = false;
-      recognition.interimResults = false;
+      recognition.interimResults = true;
       recognition.lang = 'en-CA';
 
       recognition.onresult = function(event) {
-        var transcript = event.results[0][0].transcript;
-        input.value = transcript;
-        sendMessage(transcript);
-        input.value = '';
+        var interim = '';
+        var final = '';
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+          var transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            final += transcript;
+          } else {
+            interim += transcript;
+          }
+        }
+        // Show live text as user speaks
+        input.value = final || interim;
+        input.style.color = final ? '' : 'var(--teal)';
+
+        // Send when speech is final
+        if (final) {
+          input.style.color = '';
+          sendMessage(final);
+          input.value = '';
+        }
       };
       recognition.onend = function() {
         isListening = false;

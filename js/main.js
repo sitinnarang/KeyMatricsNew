@@ -674,6 +674,104 @@
       return 'I appreciate your question, but I can only help with topics related to <strong>Key Metrics Accounting</strong> services — bookkeeping, payroll, tax filing, CRA audits, and financial planning.\n\nHere are some things I can help with:\n• Our services & pricing\n• Getting started\n• CRA audit help\n• Contact information\n\nWould you like to know about any of these?';
     }
 
+    // Text-to-Speech — bot reads response aloud
+    function speakText(html) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      var plain = html.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\n/g, ' ').replace(/•/g, ', ');
+      var utter = new SpeechSynthesisUtterance(plain);
+      utter.lang = 'en-CA';
+      utter.rate = 1;
+      utter.pitch = 1;
+      // Try to find a nice voice
+      var voices = window.speechSynthesis.getVoices();
+      var preferred = voices.find(function(v) { return v.lang.startsWith('en') && v.name.match(/female|samantha|google.*us|zira|jenny/i); });
+      if (preferred) utter.voice = preferred;
+      else if (voices.length) {
+        var enVoice = voices.find(function(v) { return v.lang.startsWith('en'); });
+        if (enVoice) utter.voice = enVoice;
+      }
+      window.speechSynthesis.speak(utter);
+    }
+
+    // Speech-to-Text — user speaks into mic
+    var recognition = null;
+    var isListening = false;
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-CA';
+
+      recognition.onresult = function(event) {
+        var transcript = event.results[0][0].transcript;
+        input.value = transcript;
+        sendMessage(transcript);
+        input.value = '';
+      };
+      recognition.onend = function() {
+        isListening = false;
+        var micBtn = document.getElementById('aiMicBtn');
+        if (micBtn) { micBtn.classList.remove('listening'); micBtn.title = 'Click to speak'; }
+      };
+      recognition.onerror = function() {
+        isListening = false;
+        var micBtn = document.getElementById('aiMicBtn');
+        if (micBtn) micBtn.classList.remove('listening');
+      };
+    }
+
+    // Add mic button to input area
+    var inputArea = document.querySelector('.ai-chat-input');
+    if (inputArea && recognition) {
+      var micBtn = document.createElement('button');
+      micBtn.id = 'aiMicBtn';
+      micBtn.className = 'ai-mic-btn';
+      micBtn.setAttribute('aria-label', 'Voice input');
+      micBtn.title = 'Click to speak';
+      micBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>';
+      inputArea.insertBefore(micBtn, send);
+
+      micBtn.addEventListener('click', function() {
+        if (isListening) {
+          recognition.stop();
+          isListening = false;
+          micBtn.classList.remove('listening');
+        } else {
+          recognition.start();
+          isListening = true;
+          micBtn.classList.add('listening');
+          micBtn.title = 'Listening...';
+        }
+      });
+    }
+
+    // Add speaker toggle button to header
+    var chatHeader = document.querySelector('.ai-chat-header');
+    var voiceEnabled = true;
+    if (chatHeader) {
+      var speakerBtn = document.createElement('button');
+      speakerBtn.id = 'aiSpeakerBtn';
+      speakerBtn.className = 'ai-speaker-btn';
+      speakerBtn.setAttribute('aria-label', 'Toggle voice');
+      speakerBtn.title = 'Voice on';
+      speakerBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+      chatHeader.insertBefore(speakerBtn, chatHeader.querySelector('.ai-chat-status'));
+
+      speakerBtn.addEventListener('click', function() {
+        voiceEnabled = !voiceEnabled;
+        if (!voiceEnabled) {
+          window.speechSynthesis.cancel();
+          speakerBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+          speakerBtn.title = 'Voice off';
+        } else {
+          speakerBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+          speakerBtn.title = 'Voice on';
+        }
+      });
+    }
+
     function sendMessage(text) {
       if (!text.trim()) return;
       addMsg(text, 'user');
@@ -682,7 +780,9 @@
       var delay = 800 + Math.random() * 1200;
       setTimeout(function() {
         removeTyping();
-        addMsg(matchResponse(text), 'bot');
+        var response = matchResponse(text);
+        addMsg(response, 'bot');
+        if (voiceEnabled) speakText(response);
       }, delay);
     }
 

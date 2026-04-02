@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:brownboysaccounting.ca)",
+      "Bash(curl -s \"https://cdn.prod.website-files.com/67327572134522df779976ad/css/new-parikh-financial-24-25.webflow.shared.16c3f2b94.css\")",
+      "Bash(curl -s \"https://cdn.prod.website-files.com/67327572134522df779976ad/css/new-parikh-financial-24-25.webflow.main.3a05876a9.css\")",
+      "Bash(curl -s \"https://www.parikh.financial/\")",
+      "Bash(sed -n '/<head>/,/<\\\\/head>/p')",
+      "Read(//tmp/**)",
+      "WebFetch(domain:www.parikh.financial)",
+      "Bash(grep -oE \"--parikh-[^:]+:[^;]+\")",
+      "WebFetch(domain:www.bench.co)"
+    ]
+  }
+}

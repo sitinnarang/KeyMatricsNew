@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Key Metrics Accounting comprehensive services — Tax Strategy, Corporate Tax, Bookkeeping, Payroll, CRA Representation, and Wealth Management across Canada." />
+  <meta name="keywords" content="CPA services, tax strategy, bookkeeping, payroll, CRA audit, business advisory, Calgary accounting" />
+  <title>Services | Key Metrics Accounting — Peak Financial Performance</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    /* ── Services page overrides ── */
+
+    /* Hero */
+    .svc-hero {
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: calc(var(--nav-h) + 64px) 0 80px;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg) 55%, var(--bg-2) 100%);
+    }
+
+    .svc-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .svc-hero-content .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-m);
+      margin-bottom: 18px;
+    }
+
+    .svc-hero-content .breadcrumb a {
+      color: var(--text-m);
+      transition: color 0.2s;
+    }
+
+    .svc-hero-content .breadcrumb a:hover { color: var(--teal-dk); }
+
+    .svc-hero-content h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: var(--dark);
+    }
+
+    .svc-hero-content p {
+      font-size: 1.05rem;
+      color: var(--text-m);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Intro section ── */
+    .svc-intro {
+      padding: 90px 0;
+    }
+
+    .svc-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .svc-intro-img {
+      border-radius: 24px;
+      overflow: hidden;
+      height: 460px;
+      border: 1.5px solid var(--border);
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .svc-intro-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .svc-intro-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(46,209,205,0.06), transparent 60%);
+    }
+
+    .svc-intro-text h2 {
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .svc-intro-text p {
+      color: var(--text-m);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* ── Service detail cards ── */
+    .svc-detail-section {
+      padding: 80px 0;
+      background: var(--bg-2);
+    }
+
+    .svc-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .svc-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+      position: relative;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad-teal);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .svc-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: rgba(46,209,205,0.4);
+    }
+
+    .svc-card:hover::before { opacity: 1; }
+
+    .svc-card-header {
+      padding: 32px 32px 24px;
+      background: var(--bg-3);
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .svc-card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .svc-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .svc-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-m);
+      line-height: 1.7;
+    }
+
+    .svc-card-body {
+      padding: 24px 32px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .svc-features {
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+      flex: 1;
+    }
+
+    .svc-features li {
+      font-size: 0.86rem;
+      color: var(--text-m);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .svc-features li::before {
+      content: '✦';
+      color: var(--teal);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .svc-features li:last-child { border-bottom: none; }
+
+    .svc-pricing-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 1.5px solid var(--border);
+      gap: 12px;
+    }
+
+    .svc-price-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-f);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .svc-price-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .svc-price-value span {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-f);
+    }
+
+    .btn-svc {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 20px;
+      background: var(--grad);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      border-radius: 10px;
+      white-space: nowrap;
+      transition: opacity 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .btn-svc:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,60,71,0.25);
+    }
+
+    /* ── Process ── */
+    .process-section {
+      padding: 88px 0;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(12.5% + 24px);
+      right: calc(12.5% + 24px);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--teal) 20%, var(--teal-dk) 80%, transparent);
+      opacity: 0.3;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 20px 16px;
+    }
+
+    .step-num {
+      width: 72px;
+      height: 72px;
+      background: var(--grad);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 28px rgba(0,60,71,0.25);
+    }
+
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 0.86rem;
+      color: var(--text-m);
+      line-height: 1.7;
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      padding: 88px 0;
+      background: var(--bg-2);
+    }
+
+    /* ── CTA ── */
+    .svc-cta {
+      padding: 100px 0;
+      text-align: center;
+      background: var(--bg-3);
+    }
+
+    .svc-cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .svc-cta h2 {
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: var(--dark);
+    }
+
+    .svc-cta p {
+      color: var(--text-m);
+      font-size: 1rem;
+      margin-bottom: 36px;
+    }
+
+    .svc-cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .svc-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .svc-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .svc-intro-img { height: 300px; }
+
+      .svc-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-steps::before { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header role="banner">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-inner">
+        <a href="../index.html" class="navbar-logo" aria-label="Key Metrics Accounting Home">
+          <img src="../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img">
+          <span class="logo-text">Key Metrics<span>Accounting</span></span>
+        </a>
+
+        <ul class="navbar-nav" role="list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link active">Services</a></li>
+          <li><a href="automation.html" class="nav-link">Automation</a></li>
+          <li><a href="small-business.html" class="nav-link">Small Business</a></li>
+          <li><a href="../index.html#about" class="nav-link">About</a></li>
+          <li><a href="../index.html#team" class="nav-link">Team</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div id="google_translate_element"></div>
+        <div class="custom-lang notranslate">
+          <button class="custom-lang-btn" aria-label="Select language">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            EN
+          </button>
+          <div class="custom-lang-dd">
+            <a data-lang="en">English</a>
+            <a data-lang="fr">Fran&ccedil;ais</a>
+            <a data-lang="es">Espa&ntilde;ol</a>
+            <a data-lang="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</a>
+            <a data-lang="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624;</a>
+            <a data-lang="zh-CN">&#20013;&#25991;</a>
+            <a data-lang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+            <a data-lang="ur">&#1575;&#1585;&#1583;&#1608;</a>
+            <a data-lang="tl">Filipino</a>
+            <a data-lang="de">Deutsch</a>
+            <a data-lang="pt">Portugu&ecirc;s</a>
+            <a data-lang="ko">&#54620;&#44397;&#50612;</a>
+            <a data-lang="ja">&#26085;&#26412;&#35486;</a>
+          </div>
+        </div>
+        <div class="theme-toggle notranslate">
+          <button class="theme-toggle-btn" aria-label="Theme settings">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+          <div class="theme-dd">
+            <div class="theme-dd-title">Theme</div>
+            <div class="theme-dd-opt active" data-mode="light"><span class="theme-dd-swatch light"></span> Light</div>
+            <div class="theme-dd-opt" data-mode="dark"><span class="theme-dd-swatch dark"></span> Dark</div>
+            <div class="theme-dd-opt" data-mode="blue"><span class="theme-dd-swatch blue"></span> Blue</div>
+          </div>
+        </div>
+        <div class="navbar-cta">
+          <a href="contact.html" class="btn btn-dark" aria-label="Book free consultation">
+            Free Consultation
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile Navigation">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="services.html" class="nav-link active">Services</a>
+      <a href="automation.html" class="nav-link">Automation</a>
+      <a href="small-business.html" class="nav-link">Small Business</a>
+      <a href="../index.html#about" class="nav-link">About</a>
+      <a href="../index.html#team" class="nav-link">Team</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="contact.html" class="btn btn-dark">Free Consultation</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="svc-hero" aria-labelledby="svc-heading">
+
+      <div class="hero-bg-blob hero-bg-blob-1" aria-hidden="true"></div>
+      <div class="hero-bg-blob hero-bg-blob-2" aria-hidden="true"></div>
+      <div class="hero-bg-dots" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="svc-hero-content reveal">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Services</span>
+          </nav>
+          <span class="section-tag">What We Offer</span>
+          <h1 id="svc-heading">Expert Services for <span class="teal-text">Peak Performance</span></h1>
+          <p>From startup bookkeeping to enterprise tax strategy — Key Metrics Accounting delivers precision, insight, and measurable savings across every financial discipline.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== INTRO ===================== -->
+    <section class="svc-intro" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="svc-intro-grid">
+
+          <div class="svc-intro-text reveal-left">
+            <span class="section-tag">Expertise You Can Trust</span>
+            <h2 class="section-title" id="intro-heading">Tailored Solutions for <span class="teal-text">Every Financial Need</span></h2>
+            <p>
+              Whether you're a startup building financial foundations, a growing SME navigating complexity, or a high-net-worth individual planning for legacy — Key Metrics Accounting delivers precision, speed, and peace of mind.
+            </p>
+            <p>
+              Our 40+ certified professionals bring specialized knowledge across technology, real estate, healthcare, manufacturing, professional services, and non-profits. We don't believe in templates — every engagement starts with a deep understanding of your unique goals and the Canadian tax landscape.
+            </p>
+            <a href="contact.html" class="btn btn-dark">Start with a Free Consultation</a>
+          </div>
+
+          <div class="svc-intro-img reveal-right">
+            <img
+              src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=700&auto=format&fit=crop&q=80"
+              alt="Key Metrics Accounting professionals reviewing financial strategy"
+              loading="lazy"
+              width="700"
+              height="460"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICE CARDS ===================== -->
+    <section class="svc-detail-section" id="all-services" aria-labelledby="all-svc-heading">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">All Services</span>
+          <h2 class="section-title" id="all-svc-heading">Everything You Need to <span class="teal-text">Win Financially</span></h2>
+          <p class="section-subtitle">Each service is delivered by dedicated specialists with deep domain expertise and a relentless focus on measurable outcomes.</p>
+        </div>
+
+        <div class="svc-detail-grid">
+
+          <!-- Tax Strategy -->
+          <article class="svc-card reveal delay-100" id="tax-strategy" aria-labelledby="ts-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">📊</span>
+              <h3 class="svc-card-title" id="ts-title">Tax Strategy &amp; Planning</h3>
+              <p class="svc-card-desc">Proactive year-round strategies that legally minimize your CRA liability while keeping you fully compliant.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Tax Strategy features">
+                <li>Personal and corporate income tax planning</li>
+                <li>RRSP, TFSA, and retirement optimization</li>
+                <li>Corporate restructuring for tax efficiency</li>
+                <li>Capital gains and loss harvesting strategies</li>
+                <li>Multi-provincial tax compliance</li>
+                <li>HST/GST registration and filing</li>
+                <li>R&amp;D tax credit (SR&amp;ED) identification</li>
+                <li>Quarterly installment management</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$299 <span>/ month</span></div>
+                </div>
+                <a href="services/tax-strategy.html" class="btn-svc" aria-label="Learn more about Tax Strategy">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Corporate Tax -->
+          <article class="svc-card reveal delay-200" id="corporate-tax" aria-labelledby="ct-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">🏢</span>
+              <h3 class="svc-card-title" id="ct-title">Corporate Tax Filing</h3>
+              <p class="svc-card-desc">Accurate, on-time T2 corporate returns with maximum deductions and full CRA compliance — every year.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Corporate Tax features">
+                <li>T2 corporate income tax return preparation</li>
+                <li>CCPC small business deduction optimization</li>
+                <li>Inter-company transactions and transfer pricing</li>
+                <li>Scientific Research &amp; Experimental Development</li>
+                <li>Capital cost allowance (CCA) schedules</li>
+                <li>Associated corporation analysis</li>
+                <li>Tax provision and deferred tax calculations</li>
+                <li>Post-filing CRA correspondence handling</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$799 <span>/ return</span></div>
+                </div>
+                <a href="services/corporate-tax.html" class="btn-svc" aria-label="Learn more about Corporate Tax">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Personal Tax -->
+          <article class="svc-card reveal delay-300" id="personal-tax" aria-labelledby="pt-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">👤</span>
+              <h3 class="svc-card-title" id="pt-title">Personal Tax Return</h3>
+              <p class="svc-card-desc">Comprehensive T1 preparation that captures every eligible deduction and credit, maximizing your refund.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Personal Tax features">
+                <li>T1 general income tax return preparation</li>
+                <li>Investment income and capital gains reporting</li>
+                <li>Rental property income and expense tracking</li>
+                <li>Self-employment income (T2125) preparation</li>
+                <li>Foreign income and asset disclosure (T1135)</li>
+                <li>Medical, charitable, and moving expense claims</li>
+                <li>Prior year adjustments and RRSP optimization</li>
+                <li>Spousal income-splitting strategies</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$199 <span>/ return</span></div>
+                </div>
+                <a href="services/personal-tax.html" class="btn-svc" aria-label="Learn more about Personal Tax">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bookkeeping -->
+          <article class="svc-card reveal delay-100" id="bookkeeping" aria-labelledby="bk-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">📚</span>
+              <h3 class="svc-card-title" id="bk-title">Bookkeeping &amp; Reporting</h3>
+              <p class="svc-card-desc">Real-time, immaculate books that give you crystal-clear visibility into your business performance at all times.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Bookkeeping features">
+                <li>Daily transaction categorization and reconciliation</li>
+                <li>Accounts payable and receivable management</li>
+                <li>Monthly P&amp;L and balance sheet preparation</li>
+                <li>Bank and credit card reconciliation</li>
+                <li>Inventory accounting and COGS tracking</li>
+                <li>QuickBooks Online / Xero cloud setup</li>
+                <li>Fixed asset schedules and amortization</li>
+                <li>HST/GST tracking and filing preparation</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$199 <span>/ month</span></div>
+                </div>
+                <a href="services/bookkeeping.html" class="btn-svc" aria-label="Learn more about Bookkeeping">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Payroll -->
+          <article class="svc-card reveal delay-200" id="payroll" aria-labelledby="py-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">💳</span>
+              <h3 class="svc-card-title" id="py-title">Payroll Services</h3>
+              <p class="svc-card-desc">End-to-end payroll processing with guaranteed accuracy, timely CRA remittances, and zero compliance risk.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Payroll features">
+                <li>Weekly, bi-weekly, and semi-monthly payroll runs</li>
+                <li>Direct deposit and pay stub management</li>
+                <li>CRA payroll tax remittances (CPP, EI, income tax)</li>
+                <li>T4 and T4A slip preparation and filing</li>
+                <li>Multi-province payroll support</li>
+                <li>Benefits integration (group health, RRSP matching)</li>
+                <li>ROE (Record of Employment) preparation</li>
+                <li>Employee self-service portal setup</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$149 <span>/ month</span></div>
+                </div>
+                <a href="services/payroll.html" class="btn-svc" aria-label="Learn more about Payroll">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Business Advisory -->
+          <article class="svc-card reveal delay-300" id="advisory" aria-labelledby="ba-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">💼</span>
+              <h3 class="svc-card-title" id="ba-title">Business Advisory</h3>
+              <p class="svc-card-desc">Strategic financial and operational guidance to help your business overcome challenges, seize opportunities, and scale profitably.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Business Advisory features">
+                <li>Fractional CFO and Controller-as-a-Service</li>
+                <li>Business valuation and exit planning</li>
+                <li>Mergers, acquisitions &amp; succession planning</li>
+                <li>Strategic financial modeling and forecasting</li>
+                <li>Cash flow optimization and working capital</li>
+                <li>Corporate structure optimization (CCPC, holdco)</li>
+                <li>Industry benchmarking and KPI dashboards</li>
+                <li>Board-level financial reporting packages</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$750 <span>/ month</span></div>
+                </div>
+                <a href="services/business-advisory.html" class="btn-svc" aria-label="Learn more about Business Advisory">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CRA Audit & Representation -->
+          <article class="svc-card reveal delay-100" id="cra" aria-labelledby="cra-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">🛡️</span>
+              <h3 class="svc-card-title" id="cra-title">CRA Audit &amp; Representation</h3>
+              <p class="svc-card-desc">Expert CRA audit defense and resolution — we handle all communications so you can focus on your business, not the taxman.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="CRA Audit features">
+                <li>CRA audit response strategy and management</li>
+                <li>T2 and T1 reassessment appeals</li>
+                <li>Voluntary Disclosure Program (VDP) submissions</li>
+                <li>Taxpayer relief applications</li>
+                <li>Tax debt negotiation and payment arrangements</li>
+                <li>CRA collections defense</li>
+                <li>GST/HST audit representation</li>
+                <li>Objections and Tax Court support</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$1,200 <span>/ engagement</span></div>
+                </div>
+                <a href="services/cra-audit.html" class="btn-svc" aria-label="Learn more about CRA Representation">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Wealth Management -->
+          <article class="svc-card reveal delay-200" id="wealth" aria-labelledby="wm-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">💎</span>
+              <h3 class="svc-card-title" id="wm-title">Wealth Management</h3>
+              <p class="svc-card-desc">Holistic personal and corporate wealth planning that aligns every financial decision with your long-term vision and legacy goals.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Wealth Management features">
+                <li>Comprehensive financial plan development</li>
+                <li>RRSP, TFSA, and RESP optimization</li>
+                <li>Investment portfolio review and asset allocation</li>
+                <li>Life insurance and risk management analysis</li>
+                <li>Family trust and income-splitting strategies</li>
+                <li>Estate planning coordination with legal counsel</li>
+                <li>Charitable giving and donor-advised structures</li>
+                <li>Annual plan reviews and strategy updates</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$399 <span>/ month</span></div>
+                </div>
+                <a href="services/wealth-management.html" class="btn-svc" aria-label="Learn more about Wealth Management">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Estate & Succession -->
+          <article class="svc-card reveal delay-300" id="estate" aria-labelledby="es-title">
+            <div class="svc-card-header">
+              <span class="svc-card-icon" aria-hidden="true">🏛️</span>
+              <h3 class="svc-card-title" id="es-title">Estate &amp; Succession Planning</h3>
+              <p class="svc-card-desc">Protect your legacy and ensure a seamless transfer of wealth and business ownership with a tax-efficient succession strategy.</p>
+            </div>
+            <div class="svc-card-body">
+              <ul class="svc-features" aria-label="Estate planning features">
+                <li>Business succession and buy-sell agreement review</li>
+                <li>Post-mortem tax planning and terminal returns</li>
+                <li>Holding company and estate freeze structures</li>
+                <li>Capital gains exemption (LCGE) planning</li>
+                <li>Trust creation and administration</li>
+                <li>Beneficiary designation optimization</li>
+                <li>Intergenerational wealth transfer strategies</li>
+                <li>Executor support and estate accounting</li>
+              </ul>
+              <div class="svc-pricing-row">
+                <div>
+                  <div class="svc-price-label">Starting From</div>
+                  <div class="svc-price-value">$1,500 <span>/ engagement</span></div>
+                </div>
+                <a href="services/estate-succession.html" class="btn-svc" aria-label="Learn more about Estate Planning">Learn More →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROCESS ===================== -->
+    <section class="process-section" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">How We Work</span>
+          <h2 class="section-title" id="process-heading">Our Simple <span class="teal-text">4-Step Process</span></h2>
+          <p class="section-subtitle">Getting started is easy. We make onboarding smooth and ensure you see value from day one.</p>
+        </div>
+
+        <div class="process-steps">
+          <div class="process-step reveal delay-100">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3 class="step-title">Free Consultation</h3>
+            <p class="step-desc">Schedule a no-obligation discovery call. We learn your goals, challenges, and current financial situation in detail.</p>
+          </div>
+          <div class="process-step reveal delay-200">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3 class="step-title">Custom Proposal</h3>
+            <p class="step-desc">We deliver a tailored service proposal with a clear scope, timeline, and fully transparent pricing — no hidden fees, ever.</p>
+          </div>
+          <div class="process-step reveal delay-300">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3 class="step-title">Seamless Onboarding</h3>
+            <p class="step-desc">Your dedicated account manager handles data migration, system integration, and setup with zero disruption to operations.</p>
+          </div>
+          <div class="process-step reveal delay-400">
+            <div class="step-num" aria-hidden="true">4</div>
+            <h3 class="step-title">Ongoing Partnership</h3>
+            <p class="step-desc">Regular check-ins, proactive advice, and real-time reporting keep you informed and ahead of every financial challenge.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title" id="faq-heading">Frequently Asked <span class="teal-text">Questions</span></h2>
+          <p class="section-subtitle">Everything you need to know about working with Key Metrics Accounting. Can't find your answer? Reach out directly.</p>
+        </div>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              How long does it take to onboard as a new client?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p class="faq-answer-inner">Our streamlined onboarding typically takes 5–10 business days from signing your engagement letter. Your dedicated account manager handles data collection, system setup, and integration with your existing tools. For complex engagements involving accounting system migrations or audit preparation, timelines may extend to 3–4 weeks. We prioritize a smooth transition with minimal disruption to your day-to-day operations.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Do you work with businesses in specific industries only?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p class="faq-answer-inner">We work across a wide range of industries with particular depth in real estate, technology (SaaS), healthcare, construction, manufacturing, professional services (law, medicine), e-commerce, and non-profits. We also serve high-net-worth individuals and family enterprises. Our industry-specific knowledge means we understand your unique CRA compliance requirements, benchmark metrics, and growth drivers.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              What accounting software do you support?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p class="faq-answer-inner">We work with all major platforms including QuickBooks Online, QuickBooks Desktop, Xero, Sage Intacct, FreshBooks, and Wave. Our team holds QuickBooks ProAdvisor and Xero Certified Partner designations. If you're on a legacy system, we advise on migration and integration. We also integrate with payroll providers like Wagepoint, Gusto, ADP, and Ceridian.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              How are your fees structured? Are there hidden costs?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p class="faq-answer-inner">We believe in complete transparency. Most ongoing services are billed as fixed monthly retainers — you always know exactly what you're paying. Project-based work (returns, valuations, audits) is quoted upfront with a flat fee. There are never surprise charges. If your business grows significantly and scope changes, we have an honest conversation before adjusting your invoice — not after.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Can you represent me if I receive a CRA audit notice?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p class="faq-answer-inner">Absolutely — CRA audit representation is one of our strongest specialties. If you receive an audit or review notice, contact us immediately. We'll assess the notice, build your response strategy, compile documentation, and represent you through the entire process. Our track record is excellent: the vast majority of our clients' audits close with no additional tax owing.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Is my financial information kept confidential?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p class="faq-answer-inner">Client confidentiality is a cornerstone of our practice, protected by CPA Canada ethics rules and our rigorous internal security protocols. All data is encrypted in transit and at rest with AES-256. We use multi-factor authentication, conduct annual security audits, and hold SOC 2 Type II certification. All staff sign comprehensive NDAs. We will never share your information with any third party without your explicit written consent.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Do you offer services for startups and early-stage companies?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p class="faq-answer-inner">Yes — we have a dedicated startup practice. We help early-stage companies with entity formation and structure optimization, bookkeeping and investor-ready financial statements, burn rate analysis, SRED (SR&amp;ED) tax credits, and due diligence preparation. We understand that startups have unique needs and cash constraints, so we offer special startup pricing packages designed for maximum value at every growth stage.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="svc-cta" aria-labelledby="svc-cta-heading">
+      <div class="container">
+        <div class="svc-cta-inner reveal">
+          <span class="section-tag">Get Started Today</span>
+          <h2 id="svc-cta-heading">Not Sure Which Service <span class="teal-text">You Need?</span></h2>
+          <p>Book a free 30-minute strategy call. No obligation — just clear, expert guidance on your next best financial move.</p>
+          <div class="svc-cta-btns">
+            <a href="contact.html" class="btn btn-dark btn-lg">Book Free Consultation</a>
+            <a href="tel:+18005559999" class="btn-outline-dark btn-lg">📞 Call 1-800-555-9999</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <a href="../index.html" class="navbar-logo" aria-label="Key Metrics Accounting Home">
+              <img src="../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img">
+              <span class="logo-text">Key Metrics<span>Accounting</span></span>
+            </a>
+            <p>Canada's premier accounting and financial advisory firm. We empower businesses and individuals to achieve financial freedom through expert strategy and uncompromising service.</p>
+            <div class="footer-socials" aria-label="Social media links">
+              <a href="#" aria-label="Facebook" class="fsoc">f</a>
+              <a href="#" aria-label="LinkedIn" class="fsoc">in</a>
+              <a href="#" aria-label="Twitter/X" class="fsoc">✕</a>
+              <a href="#" aria-label="Instagram" class="fsoc">◎</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="../index.html#about">About Us</a></li>
+              <li><a href="../index.html#team">Our Team</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="#">Client Portal</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#tax-strategy">Tax Strategy</a></li>
+              <li><a href="#corporate-tax">Corporate Tax</a></li>
+              <li><a href="#personal-tax">Personal Tax</a></li>
+              <li><a href="#bookkeeping">Bookkeeping</a></li>
+              <li><a href="#payroll">Payroll</a></li>
+              <li><a href="#advisory">Business Advisory</a></li>
+              <li><a href="#cra">CRA Representation</a></li>
+              <li><a href="#wealth">Wealth Management</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col footer-contact-col">
+            <h4>Contact Us</h4>
+            <div class="fcontact-list">
+              <div class="fcontact-item">
+                <span class="fci" aria-hidden="true">📍</span>
+                <div>
+                  <strong>Address</strong>
+                  <span>4310 104 Ave NE<br/>Calgary, AB T3J 1W5</span>
+                </div>
+              </div>
+              <div class="fcontact-item">
+                <span class="fci" aria-hidden="true">📞</span>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:+18005559999">1-800-555-9999</a>
+                </div>
+              </div>
+              <div class="fcontact-item">
+                <span class="fci" aria-hidden="true">✉</span>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:hello@keymetricsaccounting.ca">hello@keymetricsaccounting.ca</a>
+                </div>
+              </div>
+              <div class="fcontact-item">
+                <span class="fci" aria-hidden="true">🕐</span>
+                <div>
+                  <strong>Hours</strong>
+                  <span>Mon–Fri: 8 AM – 7 PM MST</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 Key Metrics Accounting Corp. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">↑</button>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,hi,pa,zh-CN,ar,tl,ur,de,pt,ko,ja',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+    function triggerTranslate(lang) {
+      var combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        return;
+      }
+      var domain = location.hostname;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/;domain=' + domain;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/';
+      location.reload();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var wrap = document.querySelector('.custom-lang');
+      var btn = document.querySelector('.custom-lang-btn');
+      var links = document.querySelectorAll('.custom-lang-dd a');
+      if (!wrap || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        wrap.classList.toggle('open');
+      });
+      document.addEventListener('click', function() { wrap.classList.remove('open'); });
+      links.forEach(function(a) {
+        a.addEventListener('click', function() {
+          var lang = a.getAttribute('data-lang');
+          triggerTranslate(lang);
+          btn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg> ' + (lang === 'zh-CN' ? 'ZH' : lang.toUpperCase());
+          wrap.classList.remove('open');
+        });
+      });
+    });
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

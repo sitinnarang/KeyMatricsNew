@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about FinancePro's 15-year history, our expert team of CPAs and CFAs, our mission, values, and the awards that recognize our commitment to excellence." />
+  <meta name="keywords" content="about FinancePro, accounting firm history, CPA team, financial advisors, awards, certifications" />
+  <title>About Us | FinancePro Accounting &amp; Financial Services</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .story-section {
+      padding: var(--section-padding);
+      background: var(--color-white);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .story-image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      height: 480px;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-text .section-subtitle {
+      margin-bottom: 20px;
+    }
+
+    .story-text p {
+      font-size: 0.96rem;
+      color: var(--color-text-light);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .values-section {
+      padding: var(--section-padding);
+      background: var(--color-off-white);
+    }
+
+    .team-full-section {
+      padding: var(--section-padding);
+      background: var(--color-white);
+    }
+
+    .team-full-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .certifications-section {
+      padding: 72px 0;
+      background: var(--color-primary);
+    }
+
+    .cert-track {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cert-badge {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 20px 28px;
+      text-align: center;
+      color: var(--color-white);
+      transition: all var(--transition-normal);
+    }
+
+    .cert-badge:hover {
+      background: rgba(245,166,35,0.15);
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+    }
+
+    .cert-badge .cert-abbr {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .cert-badge .cert-name {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 1024px) {
+      .team-full-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .team-full-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .team-full-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header role="banner">
+    <nav class="navbar solid" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-inner">
+        <a href="../index.html" class="navbar-logo" aria-label="FinancePro Home">
+          <div class="logo-icon" aria-hidden="true">F</div>
+          <span class="logo-text">Finance<span>Pro</span></span>
+        </a>
+
+        <ul class="navbar-nav" role="list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="navbar-cta">
+          <a href="contact.html" class="btn btn-primary">Get Free Consultation</a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile Navigation">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="contact.html" class="btn btn-primary">Get Free Consultation</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="page-hero" aria-labelledby="about-page-heading">
+      <div class="container">
+        <div class="page-hero-content">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">About Us</span>
+          </nav>
+          <span class="section-tag">Our Story</span>
+          <h1 id="about-page-heading">The Team Behind <span style="color:var(--color-accent)">Your Success</span></h1>
+          <p>A firm built on integrity, expertise, and genuine passion for helping clients achieve their financial goals — for over 15 years and counting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STORY ===================== -->
+    <section class="story-section" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-image reveal-left">
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&auto=format&fit=crop&q=80"
+              alt="FinancePro founding team in early office meeting"
+              loading="lazy"
+              width="700"
+              height="480"
+            />
+          </div>
+          <div class="story-text reveal-right">
+            <span class="section-tag">Our Founding Story</span>
+            <h2 class="section-title" id="story-heading">From a Small Office to <span>Industry Leaders</span></h2>
+            <p class="section-subtitle">Founded in 2010 with a simple belief: every client deserves the same caliber of financial expertise previously only available to Fortune 500 companies.</p>
+            <p>FinancePro was founded by James Anderson and Sarah Mitchell in the aftermath of the 2008 financial crisis — a moment that made it abundantly clear how critical sound financial guidance was for businesses of all sizes. What began as a two-person tax practice in a small Manhattan office has grown into a premier full-service accounting and advisory firm with a team of over 35 specialists.</p>
+            <p>From our earliest days, we set ourselves apart by treating every client relationship as a long-term partnership rather than a transactional engagement. We take the time to deeply understand each client's business model, industry dynamics, and personal goals before recommending any course of action.</p>
+            <p>Today, FinancePro serves over 500 clients across 18 states, managing more than $2 billion in client assets and saving our clients an estimated $20 million in taxes annually. We've been recognized by Inc. Magazine, Accounting Today, and the American Institute of CPAs for our innovation, client service, and professional excellence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TIMELINE ===================== -->
+    <section class="timeline-section" aria-labelledby="timeline-heading">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Milestones</span>
+          <h2 class="section-title" id="timeline-heading">Our Journey Through <span>the Years</span></h2>
+          <p class="section-subtitle">Fifteen years of growth, milestones, and unwavering commitment to client success.</p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <span class="timeline-year">2010</span>
+              <h3>Founded in New York</h3>
+              <p>James Anderson and Sarah Mitchell founded FinancePro with 8 initial clients, two staff members, and a vision to democratize premium financial advisory services.</p>
+            </div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div style="flex:1"></div>
+          </div>
+
+          <div class="timeline-item reveal delay-100">
+            <div style="flex:1"></div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2013</span>
+              <h3>Expanded to 50 Clients</h3>
+              <p>Rapid growth through referrals led us to hire our first 10 employees and move to a larger office in the Financial District. Launched our bookkeeping and payroll divisions.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal delay-200">
+            <div class="timeline-content">
+              <span class="timeline-year">2015</span>
+              <h3>Launched Business Advisory Practice</h3>
+              <p>Hired Michael Chen as our first CFP and Elena Rodriguez as Tax Director. Launched our Business Advisory division, adding CFO-as-a-Service to our offerings.</p>
+            </div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div style="flex:1"></div>
+          </div>
+
+          <div class="timeline-item reveal delay-100">
+            <div style="flex:1"></div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2017</span>
+              <h3>First Major Industry Award</h3>
+              <p>Named "Fastest-Growing Accounting Firm" by Accounting Today magazine. Surpassed 200 clients and $500M in managed assets. Opened our second office in Boston.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal delay-200">
+            <div class="timeline-content">
+              <span class="timeline-year">2020</span>
+              <h3>COVID-19 Crisis Response</h3>
+              <p>Pivoted rapidly to remote operations and provided critical PPP loan guidance, CARES Act analysis, and emergency cash flow consulting to over 150 clients, saving many businesses from closure.</p>
+            </div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div style="flex:1"></div>
+          </div>
+
+          <div class="timeline-item reveal delay-100">
+            <div style="flex:1"></div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2022</span>
+              <h3>Technology Transformation</h3>
+              <p>Launched our proprietary client portal and integrated AI-powered financial analytics platform. Achieved SOC 2 Type II certification, underscoring our commitment to data security.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal delay-200">
+            <div class="timeline-content">
+              <span class="timeline-year">2025</span>
+              <h3>$2B+ Assets Under Management</h3>
+              <p>Crossed the $2 billion threshold in client assets managed. Expanded to 35+ professionals, 500+ clients across 18 states. Named one of Inc. 5000's fastest-growing companies.</p>
+            </div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div style="flex:1"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MISSION / VALUES ===================== -->
+    <section class="values-section" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-title" id="values-heading">Our Mission, Vision &amp; <span>Core Values</span></h2>
+          <p class="section-subtitle">The principles that guide every decision, every engagement, and every client interaction at FinancePro.</p>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-card reveal delay-100">
+            <div class="value-icon" aria-hidden="true">🎯</div>
+            <h3>Our Mission</h3>
+            <p>To empower every client with expert financial guidance, enabling them to make confident decisions, maximize their wealth, and achieve their most important financial goals.</p>
+          </div>
+
+          <div class="value-card reveal delay-200">
+            <div class="value-icon" aria-hidden="true">🔭</div>
+            <h3>Our Vision</h3>
+            <p>To be the most trusted financial partner for growing businesses and individuals — recognized for integrity, innovation, and delivering measurable, life-changing results.</p>
+          </div>
+
+          <div class="value-card reveal delay-300">
+            <div class="value-icon" aria-hidden="true">🤝</div>
+            <h3>Integrity First</h3>
+            <p>We operate with absolute honesty and transparency. Every recommendation we make is in our clients' best interest — never our own. Our reputation is built on trust, one relationship at a time.</p>
+          </div>
+
+          <div class="value-card reveal delay-100">
+            <div class="value-icon" aria-hidden="true">🌟</div>
+            <h3>Excellence Always</h3>
+            <p>We hold ourselves to the highest professional standards. Our team pursues continuous education, certifications, and industry leadership to deliver insights that make a real difference.</p>
+          </div>
+
+          <div class="value-card reveal delay-200">
+            <div class="value-icon" aria-hidden="true">💡</div>
+            <h3>Innovation-Driven</h3>
+            <p>We embrace technology and data analytics to provide insights that go beyond traditional accounting. Our clients benefit from cutting-edge tools and forward-thinking strategies.</p>
+          </div>
+
+          <div class="value-card reveal delay-300">
+            <div class="value-icon" aria-hidden="true">🌱</div>
+            <h3>Client-Centered Growth</h3>
+            <p>Your growth is our growth. We measure our success by the success of our clients. Every service, process, and innovation is designed with one question in mind: how does this help our clients thrive?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATS ===================== -->
+    <section class="stats-section" aria-labelledby="stats-heading">
+      <div class="container">
+        <div class="section-header centered reveal" style="margin-bottom:56px;">
+          <span class="section-tag">By the Numbers</span>
+          <h2 class="section-title" style="color:var(--color-white);" id="stats-heading">Our Impact <span>in Numbers</span></h2>
+        </div>
+        <div class="stats-grid" role="list">
+          <div class="stat-item reveal delay-100" role="listitem">
+            <span class="stat-number"><span class="accent" data-count="500" data-suffix="+">500+</span></span>
+            <span class="stat-label">Clients Served</span>
+          </div>
+          <div class="stat-item reveal delay-200" role="listitem">
+            <span class="stat-number"><span class="accent" data-count="15" data-suffix="+">15+</span></span>
+            <span class="stat-label">Years in Business</span>
+          </div>
+          <div class="stat-item reveal delay-300" role="listitem">
+            <span class="stat-number"><span class="accent" data-count="35" data-suffix="+">35+</span></span>
+            <span class="stat-label">Expert Professionals</span>
+          </div>
+          <div class="stat-item reveal delay-400" role="listitem">
+            <span class="stat-number"><span class="accent" data-count="20" data-suffix="M+" data-prefix="$">$20M+</span></span>
+            <span class="stat-label">Saved in Taxes Annually</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FULL TEAM ===================== -->
+    <section class="team-full-section" id="team" aria-labelledby="team-full-heading">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">The People</span>
+          <h2 class="section-title" id="team-full-heading">Meet Our Full <span>Expert Team</span></h2>
+          <p class="section-subtitle">Our 35+ team members bring unparalleled depth of expertise across every facet of accounting, tax, and financial advisory.</p>
+        </div>
+
+        <div class="team-full-grid">
+
+          <article class="team-card reveal delay-100" aria-labelledby="full-team-1">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Anderson portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="James Anderson on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email James Anderson">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-1">James Anderson</h3>
+              <p class="team-role">Managing Partner &amp; CPA</p>
+              <p class="team-bio">20+ years in corporate tax strategy and M&amp;A advisory.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal delay-200" aria-labelledby="full-team-2">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Mitchell portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="Sarah Mitchell on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email Sarah Mitchell">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-2">Sarah Mitchell</h3>
+              <p class="team-role">Senior Auditor &amp; CFA</p>
+              <p class="team-bio">Audit expert with a track record of identifying $50M+ in efficiencies.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal delay-300" aria-labelledby="full-team-3">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Michael Chen portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="Michael Chen on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email Michael Chen">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-3">Michael Chen</h3>
+              <p class="team-role">Financial Advisor &amp; CFP</p>
+              <p class="team-bio">Wealth management specialist for high-net-worth individuals and families.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal delay-400" aria-labelledby="full-team-4">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/women/66.jpg" alt="Elena Rodriguez portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="Elena Rodriguez on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email Elena Rodriguez">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-4">Elena Rodriguez</h3>
+              <p class="team-role">Tax Director &amp; JD</p>
+              <p class="team-bio">Former IRS agent with expertise in tax controversy and estate planning.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal delay-100" aria-labelledby="full-team-5">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="David Park portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="David Park on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email David Park">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-5">David Park</h3>
+              <p class="team-role">Senior Tax Manager &amp; CPA</p>
+              <p class="team-bio">International tax specialist focusing on cross-border transactions and transfer pricing.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal delay-200" aria-labelledby="full-team-6">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Amanda Foster portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="Amanda Foster on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email Amanda Foster">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-6">Amanda Foster</h3>
+              <p class="team-role">Payroll Director</p>
+              <p class="team-bio">Payroll compliance expert managing multi-state payroll for 200+ client businesses.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal delay-300" aria-labelledby="full-team-7">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Thomas Greene portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="Thomas Greene on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email Thomas Greene">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-7">Thomas Greene</h3>
+              <p class="team-role">Advisory Director &amp; MBA</p>
+              <p class="team-bio">Strategic financial consultant for mid-market companies navigating growth and acquisitions.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal delay-400" aria-labelledby="full-team-8">
+            <div class="team-photo">
+              <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="Priya Sharma portrait" loading="lazy" width="280" height="280" />
+              <div class="team-social">
+                <a href="#" class="social-btn" aria-label="Priya Sharma on LinkedIn">in</a>
+                <a href="#" class="social-btn" aria-label="Email Priya Sharma">✉</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name" id="full-team-8">Priya Sharma</h3>
+              <p class="team-role">Bookkeeping Manager &amp; QuickBooks ProAdvisor</p>
+              <p class="team-bio">Bookkeeping systems expert helping businesses implement efficient financial processes.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CERTIFICATIONS ===================== -->
+    <section class="certifications-section" aria-labelledby="cert-heading">
+      <div class="container">
+        <div class="section-header centered reveal" style="margin-bottom:48px;">
+          <span class="section-tag">Credentials</span>
+          <h2 class="section-title" style="color:var(--color-white);" id="cert-heading">Our <span>Certifications &amp; Memberships</span></h2>
+          <p class="section-subtitle" style="color:rgba(255,255,255,0.6);">Our team's credentials represent the highest standards in the accounting and financial advisory professions.</p>
+        </div>
+        <div class="cert-track reveal">
+          <div class="cert-badge">
+            <span class="cert-abbr">CPA</span>
+            <span class="cert-name">Certified Public Accountant</span>
+          </div>
+          <div class="cert-badge">
+            <span class="cert-abbr">CFA</span>
+            <span class="cert-name">Chartered Financial Analyst</span>
+          </div>
+          <div class="cert-badge">
+            <span class="cert-abbr">CFP</span>
+            <span class="cert-name">Certified Financial Planner</span>
+          </div>
+          <div class="cert-badge">
+            <span class="cert-abbr">EA</span>
+            <span class="cert-name">Enrolled Agent (IRS)</span>
+          </div>
+          <div class="cert-badge">
+            <span class="cert-abbr">AICPA</span>
+            <span class="cert-name">Member, AICPA</span>
+          </div>
+          <div class="cert-badge">
+            <span class="cert-abbr">SOC 2</span>
+            <span class="cert-name">Type II Certified</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AWARDS ===================== -->
+    <section class="awards-section" aria-labelledby="awards-heading">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Recognition</span>
+          <h2 class="section-title" id="awards-heading">Awards &amp; <span>Recognitions</span></h2>
+          <p class="section-subtitle">Industry recognition for our commitment to excellence, innovation, and client outcomes.</p>
+        </div>
+
+        <div class="awards-grid">
+          <div class="award-card reveal delay-100">
+            <div class="award-icon" aria-hidden="true">🏆</div>
+            <div class="award-title">Best Accounting Firm</div>
+            <div class="award-body">Accounting Today — 2024 & 2023</div>
+          </div>
+          <div class="award-card reveal delay-200">
+            <div class="award-icon" aria-hidden="true">⭐</div>
+            <div class="award-title">Inc. 5000 Fastest Growing</div>
+            <div class="award-body">Inc. Magazine — 2024, 2023, 2022</div>
+          </div>
+          <div class="award-card reveal delay-300">
+            <div class="award-icon" aria-hidden="true">🎖️</div>
+            <div class="award-title">Top 25 CPA Firms</div>
+            <div class="award-body">New York Business Journal — 2023</div>
+          </div>
+          <div class="award-card reveal delay-400">
+            <div class="award-icon" aria-hidden="true">🌟</div>
+            <div class="award-title">Client Satisfaction Award</div>
+            <div class="award-body">AICPA Excellence Awards — 2022</div>
+          </div>
+          <div class="award-card reveal delay-100">
+            <div class="award-icon" aria-hidden="true">💡</div>
+            <div class="award-title">Innovation in Accounting</div>
+            <div class="award-body">CPA Practice Advisor — 2023</div>
+          </div>
+          <div class="award-card reveal delay-200">
+            <div class="award-icon" aria-hidden="true">🤝</div>
+            <div class="award-title">Best Places to Work</div>
+            <div class="award-body">NY Business Journal — 2024</div>
+          </div>
+          <div class="award-card reveal delay-300">
+            <div class="award-icon" aria-hidden="true">📊</div>
+            <div class="award-title">Wealth Management Leader</div>
+            <div class="award-body">Financial Planning Association — 2023</div>
+          </div>
+          <div class="award-card reveal delay-400">
+            <div class="award-icon" aria-hidden="true">🔒</div>
+            <div class="award-title">Data Security Excellence</div>
+            <div class="award-body">SOC 2 Certified — 2022 to Present</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="cta-banner" aria-labelledby="about-cta-heading">
+      <div class="container">
+        <div class="cta-inner reveal">
+          <span class="section-tag">Work With Us</span>
+          <h2 class="section-title" id="about-cta-heading">Ready to Join Our <span>Client Family?</span></h2>
+          <p class="section-subtitle">Experience the FinancePro difference. Schedule your free consultation today and take the first step toward total financial confidence.</p>
+          <div class="cta-buttons">
+            <a href="contact.html" class="btn btn-primary btn-lg">Book Your Free Consultation</a>
+            <a href="services.html" class="btn btn-secondary btn-lg">Explore Our Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="navbar-logo" aria-label="FinancePro Home">
+            <div class="logo-icon" aria-hidden="true">F</div>
+            <span class="logo-text">Finance<span>Pro</span></span>
+          </a>
+          <p class="footer-tagline">Your trusted financial partner for over 15 years. Expert accounting, tax strategy, and financial advisory services.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="footer-social-link" aria-label="Facebook">f</a>
+            <a href="#" class="footer-social-link" aria-label="Twitter/X">✕</a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="footer-social-link" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="services.html" class="footer-link">Services</a></li>
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="services.html#tax-planning" class="footer-link">Tax Planning</a></li>
+            <li><a href="services.html#audit" class="footer-link">Audit &amp; Assurance</a></li>
+            <li><a href="services.html#advisory" class="footer-link">Business Advisory</a></li>
+            <li><a href="services.html#payroll" class="footer-link">Payroll Services</a></li>
+            <li><a href="services.html#bookkeeping" class="footer-link">Bookkeeping</a></li>
+            <li><a href="services.html#financial-planning" class="footer-link">Financial Planning</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Contact Info</h3>
+          <div class="footer-contact-item">
+            <div class="contact-icon" aria-hidden="true">📍</div>
+            <div>1245 Financial District Ave, Suite 800,<br />New York, NY 10005</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="contact-icon" aria-hidden="true">📞</div>
+            <div><a href="tel:+18005551234" style="color:inherit;">1-800-555-1234</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="contact-icon" aria-hidden="true">✉</div>
+            <div><a href="mailto:info@financepro.com" style="color:inherit;">info@financepro.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">© 2025 FinancePro Accounting &amp; Advisory. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

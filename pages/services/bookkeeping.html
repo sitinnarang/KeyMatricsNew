@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monthly Bookkeeping | Key Metrics Accounting</title>
+  <meta name="description" content="Small business bookkeeping service that simplifies your life. Expert human bookkeepers, powerful cloud software, and accurate CRA-compliant records — Key Metrics Accounting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/service-page.css" />
+
+  <style>
+    /* ── Bookkeeping Page Extras ── */
+
+    /* Benefits band */
+    .bk-benefits {
+      padding: 56px 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .bk-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .bk-benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .bk-benefit-icon {
+      width: 52px; height: 52px;
+      background: var(--teal-pale);
+      border: 1.5px solid rgba(46,209,205,0.3);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .bk-benefit p {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .bk-benefit strong { color: var(--dark); display: block; margin-bottom: 2px; }
+
+    /* 3-Pillar section */
+    .bk-pillars {
+      padding: 100px 0;
+    }
+    .bk-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .bk-pillar {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      transition: var(--trans);
+      position: relative;
+      overflow: hidden;
+    }
+    .bk-pillar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--grad-teal);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bk-pillar:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,60,71,0.1);
+      border-color: rgba(46,209,205,0.4);
+    }
+    .bk-pillar:hover::before { opacity: 1; }
+    .bk-pillar-icon {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .bk-pillar-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--teal-dk);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .bk-pillar h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+    .bk-pillar p {
+      font-size: 0.88rem;
+      color: var(--text-m);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .bk-pillar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bk-pillar-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.84rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .bk-pillar-list li::before {
+      content: '✓';
+      color: var(--teal-dk);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Testimonials */
+    .bk-test {
+      padding: 100px 0;
+      background: var(--bg-2);
+    }
+    .bk-test-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 52px;
+    }
+    .bk-test-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      transition: var(--trans);
+    }
+    .bk-test-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .bk-test-stars {
+      color: #f59e0b;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .bk-test-quote {
+      font-size: 0.93rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .bk-test-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .bk-test-avatar {
+      width: 48px; height: 48px;
+      background: var(--teal-pale);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--teal-dk);
+    }
+    .bk-test-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .bk-test-role {
+      font-size: 0.78rem;
+      color: var(--text-f);
+    }
+
+    /* Add-on services */
+    .bk-addons {
+      padding: 100px 0;
+    }
+    .bk-addons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 52px;
+    }
+    .bk-addon-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 36px;
+      transition: var(--trans);
+      position: relative;
+      overflow: hidden;
+    }
+    .bk-addon-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--grad-teal);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bk-addon-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow);
+      border-color: rgba(46,209,205,0.4);
+    }
+    .bk-addon-card:hover::before { opacity: 1; }
+    .bk-addon-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .bk-addon-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .bk-addon-card p {
+      font-size: 0.88rem;
+      color: var(--text-m);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .bk-addon-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--teal-dk);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .bk-addon-card:hover .bk-addon-link { gap: 10px; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .bk-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+      .bk-pillars-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .bk-benefits-grid { grid-template-columns: 1fr; }
+      .bk-test-grid { grid-template-columns: 1fr; }
+      .bk-addons-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header role="banner">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-inner">
+        <a href="../../index.html" class="navbar-logo"><img src="../../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img"><span class="logo-text">Key Metrics<span>Accounting</span></span></a>
+        <ul class="navbar-nav" role="list">
+          <li><a href="../../index.html" class="nav-link">Home</a></li>
+          <li><a href="../services.html" class="nav-link active">Services</a></li>
+          <li><a href="../automation.html" class="nav-link">Automation</a></li>
+          <li><a href="../small-business.html" class="nav-link">Small Business</a></li>
+          <li><a href="../../index.html#about" class="nav-link">About</a></li>
+          <li><a href="../../index.html#team" class="nav-link">Team</a></li>
+          <li><a href="../blog.html" class="nav-link">Blog</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div id="google_translate_element"></div>
+        <div class="custom-lang notranslate">
+          <button class="custom-lang-btn" aria-label="Select language">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            EN
+          </button>
+          <div class="custom-lang-dd">
+            <a data-lang="en">English</a>
+            <a data-lang="fr">Fran&ccedil;ais</a>
+            <a data-lang="es">Espa&ntilde;ol</a>
+            <a data-lang="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</a>
+            <a data-lang="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624;</a>
+            <a data-lang="zh-CN">&#20013;&#25991;</a>
+            <a data-lang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+            <a data-lang="ur">&#1575;&#1585;&#1583;&#1608;</a>
+            <a data-lang="tl">Filipino</a>
+            <a data-lang="de">Deutsch</a>
+            <a data-lang="pt">Portugu&ecirc;s</a>
+            <a data-lang="ko">&#54620;&#44397;&#50612;</a>
+            <a data-lang="ja">&#26085;&#26412;&#35486;</a>
+          </div>
+        </div>
+        <div class="theme-toggle notranslate">
+          <button class="theme-toggle-btn" aria-label="Theme settings">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+          <div class="theme-dd">
+            <div class="theme-dd-title">Theme</div>
+            <div class="theme-dd-opt active" data-mode="light"><span class="theme-dd-swatch light"></span> Light</div>
+            <div class="theme-dd-opt" data-mode="dark"><span class="theme-dd-swatch dark"></span> Dark</div>
+            <div class="theme-dd-opt" data-mode="blue"><span class="theme-dd-swatch blue"></span> Blue</div>
+          </div>
+        </div>
+        <div class="navbar-cta"><a href="../contact.html" class="btn btn-dark">Free Consultation <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../services.html" class="nav-link active">Services</a>
+      <a href="../automation.html" class="nav-link">Automation</a>
+      <a href="../small-business.html" class="nav-link">Small Business</a>
+      <a href="../../index.html#about" class="nav-link">About</a>
+      <a href="../contact.html" class="nav-link">Contact</a>
+      <a href="../contact.html" class="btn btn-dark">Free Consultation</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="sp-hero">
+      <div class="container">
+        <div class="sp-hero-inner">
+          <nav class="sp-breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <a href="../services.html">Services</a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>Monthly Bookkeeping</span>
+          </nav>
+          <div class="sp-hero-icon reveal">📚</div>
+          <h1 class="reveal">Small Business Bookkeeping Service That <span class="teal-text">Simplifies Your Life</span></h1>
+          <p class="reveal delay-100">Save time and money with expert bookkeeping and powerful cloud software. Get clean, accurate, CRA-compliant books every month — plus your first month's financial statements free when you sign up.</p>
+          <div class="sp-hero-actions reveal delay-200">
+            <a href="../contact.html" class="btn btn-teal btn-lg">Get Started <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="../contact.html" class="btn btn-outline-dark btn-lg">Book a Demo</a>
+          </div>
+          <div class="sp-hero-stat reveal delay-300">
+            <span class="sp-hero-stat-num">48hrs</span>
+            <span class="sp-hero-stat-label">turnaround on monthly<br/>financial package delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY BENEFITS BAND -->
+    <section class="bk-benefits">
+      <div class="container">
+        <div class="bk-benefits-grid">
+          <div class="bk-benefit reveal delay-100">
+            <div class="bk-benefit-icon">&#9201;</div>
+            <p><strong>Save 10+ hours/month</strong>Like most business owners we help — stop doing your own books.</p>
+          </div>
+          <div class="bk-benefit reveal delay-200">
+            <div class="bk-benefit-icon">&#128200;</div>
+            <p><strong>See where you're spending</strong>Make smarter financial decisions with real-time visibility.</p>
+          </div>
+          <div class="bk-benefit reveal delay-300">
+            <div class="bk-benefit-icon">&#128101;</div>
+            <p><strong>Talk to real experts</strong>Ask questions and get answers from human bookkeepers and CPAs.</p>
+          </div>
+          <div class="bk-benefit reveal delay-400">
+            <div class="bk-benefit-icon">&#128737;</div>
+            <p><strong>Always CRA-compliant</strong>Get accurate, audit-ready financial records year-round.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-PILLAR FEATURES -->
+    <section class="bk-pillars" id="overview">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">What You Get</span>
+          <h2 class="section-title">Powerful Software. Expert Humans. <span class="teal-text">Perfect Books.</span></h2>
+          <p class="section-subtitle">Three pillars that work together to deliver bookkeeping that's accurate, timely, and effortless.</p>
+        </div>
+
+        <div class="bk-pillars-grid">
+          <!-- Pillar 1 -->
+          <div class="bk-pillar reveal delay-100">
+            <span class="bk-pillar-icon">&#128187;</span>
+            <span class="bk-pillar-num">Pillar 01</span>
+            <h3>Powerful Bookkeeping Software</h3>
+            <p>Seamlessly connect your financial accounts and let our cloud platform do the heavy lifting — from data import to smart categorization.</p>
+            <ul class="bk-pillar-list">
+              <li>Seamless integration with banks, credit cards, Shopify, Stripe, Square</li>
+              <li>Smart transaction categorization using AI and 10+ years of accounting patterns</li>
+              <li>Automatic receipt extraction and document handling</li>
+              <li>Real-time access from any device via QuickBooks Online or Xero</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="bk-pillar reveal delay-200">
+            <span class="bk-pillar-icon">&#128105;&#8205;&#128187;</span>
+            <span class="bk-pillar-num">Pillar 02</span>
+            <h3>Expert Team of Human Bookkeepers</h3>
+            <p>Your books are managed by a dedicated team of real professionals — not chatbots, not offshore outsourcing. Canadian CPAs who know your business.</p>
+            <ul class="bk-pillar-list">
+              <li>Dedicated bookkeeper assigned to your account</li>
+              <li>Proactive guidance on spending patterns and categorization questions</li>
+              <li>In-app messaging and scheduled check-in calls</li>
+              <li>Monthly review meetings to discuss financial performance</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="bk-pillar reveal delay-300">
+            <span class="bk-pillar-icon">&#128202;</span>
+            <span class="bk-pillar-num">Pillar 03</span>
+            <h3>Accurate &amp; CRA-Compliant Books</h3>
+            <p>Real-time financial statements delivered monthly — income statements, balance sheets, expense reports, and P&amp;L — all CRA-ready.</p>
+            <ul class="bk-pillar-list">
+              <li>Monthly P&amp;L, balance sheet, and cash flow statement</li>
+              <li>Reports downloadable in seconds — PDF or CSV</li>
+              <li>CRA-compliant year-end financial package for simplified tax filing</li>
+              <li>HST/GST tracking and filing preparation included</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT'S INCLUDED -->
+    <section class="sp-features-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">What's Included</span>
+          <h2 class="section-title">Everything Your Books Need, Handled</h2>
+          <p class="section-subtitle">Comprehensive bookkeeping services covering every aspect of your financial records — so nothing falls through the cracks.</p>
+        </div>
+        <div class="sp-features-grid">
+          <div class="sp-feature-card reveal delay-100">
+            <div class="sp-feature-icon">&#128203;</div>
+            <h3>Transaction Categorization</h3>
+            <p>Daily reconciliation of all transactions across bank accounts, credit cards, and payment processors — accurately categorized every time.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-200">
+            <div class="sp-feature-icon">&#128236;</div>
+            <h3>AP/AR Management</h3>
+            <p>Track what you owe and what's owed to you, with aging reports and follow-up schedules to keep cash flowing.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-300">
+            <div class="sp-feature-icon">&#128200;</div>
+            <h3>Financial Statements</h3>
+            <p>Monthly P&amp;L, balance sheet, and cash flow statement with plain-language commentary so you actually understand the numbers.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-100">
+            <div class="sp-feature-icon">&#127974;</div>
+            <h3>Bank Reconciliation</h3>
+            <p>Monthly reconciliation of all accounts to ensure your books match your bank to the penny — every single month.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-200">
+            <div class="sp-feature-icon">&#128230;</div>
+            <h3>Inventory Accounting</h3>
+            <p>COGS tracking, inventory valuation, and shrinkage analysis for product-based businesses running Shopify, Amazon, or retail.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-300">
+            <div class="sp-feature-icon">&#129534;</div>
+            <h3>HST/GST Tracking</h3>
+            <p>Automatic input tax credit tracking and quarterly/annual filing preparation — so you never overpay or miss a deadline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="sp-process-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">Up and Running in <span class="teal-text">Days, Not Weeks</span></h2>
+          <p class="section-subtitle">A simple, structured onboarding process designed to get your books clean and current as fast as possible.</p>
+        </div>
+        <div class="sp-process-steps">
+          <div class="sp-step reveal delay-100">
+            <div class="sp-step-num">01</div>
+            <h3>Connect Your Accounts</h3>
+            <p>We link your bank accounts, credit cards, and business tools — QuickBooks, Xero, Shopify, Stripe — securely via Plaid.</p>
+          </div>
+          <div class="sp-step reveal delay-200">
+            <div class="sp-step-num">02</div>
+            <h3>We Handle Everything</h3>
+            <p>Transactions are imported, categorized, and reconciled automatically every day. Receipts are matched. Questions are flagged.</p>
+          </div>
+          <div class="sp-step reveal delay-300">
+            <div class="sp-step-num">03</div>
+            <h3>Monthly Close &amp; Reports</h3>
+            <p>By the 10th of every month, your full financial package is in your inbox — P&amp;L, balance sheet, cash flow, and commentary.</p>
+          </div>
+          <div class="sp-step reveal delay-400">
+            <div class="sp-step-num">04</div>
+            <h3>Review &amp; Insights</h3>
+            <p>Optional monthly 30-minute call with your dedicated bookkeeper to review financials and discuss business performance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY KEY METRICS -->
+    <section class="sp-why-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Why Key Metrics Accounting</span>
+          <h2 class="section-title">Numbers You Can Count On</h2>
+          <p class="section-subtitle">Our bookkeeping track record speaks for itself — accurate, fast, and built on real quality control.</p>
+        </div>
+        <div class="sp-why-grid">
+          <div class="sp-why-card reveal delay-100">
+            <div class="sp-why-num teal-text">48hrs</div>
+            <h3>Average Report Delivery</h3>
+            <p>Monthly financials in your inbox within 48 hours of month-end close — guaranteed.</p>
+          </div>
+          <div class="sp-why-card reveal delay-200">
+            <div class="sp-why-num teal-text">99.8%</div>
+            <h3>Categorization Accuracy</h3>
+            <p>Smart categorization backed by dual-review quality control — error-free books, every month.</p>
+          </div>
+          <div class="sp-why-card reveal delay-300">
+            <div class="sp-why-num teal-text">10+ hrs</div>
+            <h3>Saved Per Month</h3>
+            <p>Average time our clients save versus self-managing their books — reinvested into growing their business.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="bk-test">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Trusted by Business Owners</span>
+          <h2 class="section-title">What Our Clients <span class="teal-text">Say</span></h2>
+          <p class="section-subtitle">Hear from Canadian small business owners who made the switch to Key Metrics bookkeeping.</p>
+        </div>
+        <div class="bk-test-grid">
+          <div class="bk-test-card reveal delay-100">
+            <div class="bk-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="bk-test-quote">"It's amazing that transactions get automatically categorized, and there's always someone reaching out if something doesn't look right. I used to spend entire weekends on my books — now I don't even think about it."</p>
+            <div class="bk-test-author">
+              <div class="bk-test-avatar">RP</div>
+              <div>
+                <div class="bk-test-name">Raj Patel</div>
+                <div class="bk-test-role">Founder, Northern Eats Inc.</div>
+              </div>
+            </div>
+          </div>
+          <div class="bk-test-card reveal delay-200">
+            <div class="bk-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="bk-test-quote">"I just don't worry about bookkeeping anymore. The monthly reports are clear, my CPA has everything they need for tax season, and if I make a mistake the team catches it immediately. Best decision I've made for my business."</p>
+            <div class="bk-test-author">
+              <div class="bk-test-avatar">ML</div>
+              <div>
+                <div class="bk-test-name">Maria Lopez</div>
+                <div class="bk-test-role">CEO, Bright Path Consulting</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADD-ON SERVICES -->
+    <section class="bk-addons">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Add-On Services</span>
+          <h2 class="section-title">Need More? We've Got <span class="teal-text">You Covered</span></h2>
+          <p class="section-subtitle">Extend your bookkeeping with catch-up services and year-round tax support.</p>
+        </div>
+        <div class="bk-addons-grid">
+          <div class="bk-addon-card reveal delay-100">
+            <span class="bk-addon-icon">&#128197;</span>
+            <h3>Catch-Up Bookkeeping</h3>
+            <p>Falling behind happens — but we're here to help you get back on track. Whether you're a few months or a few years behind, our team of experts will get your books up to date and ready for filing. We prioritize the most recent periods first so you have current financials immediately.</p>
+            <a href="../contact.html" class="bk-addon-link">Get Caught Up &rsaquo;</a>
+          </div>
+          <div class="bk-addon-card reveal delay-200">
+            <span class="bk-addon-icon">&#128176;</span>
+            <h3>Tax Filing &amp; Advisory</h3>
+            <p>Year-round tax advice and expert filing with no hidden fees, no last-minute surprises. When your books are done by Key Metrics, your tax return practically prepares itself. We handle T1, T2, HST/GST, and strategic tax planning as a seamless extension of your bookkeeping.</p>
+            <a href="tax-strategy.html" class="bk-addon-link">Explore Tax Services &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sp-faq-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title">Common Bookkeeping Questions</h2>
+          <p class="section-subtitle">Straightforward answers to what business owners ask us most about our bookkeeping service.</p>
+        </div>
+        <ul class="faq-list reveal" style="max-width:800px;margin:48px auto 0;">
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Does Key Metrics handle all bookkeeping tasks?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Yes. We handle everything — transaction categorization, bank reconciliation, accounts payable/receivable, HST/GST tracking, monthly financial statements, and year-end preparation. You don't need to touch your books at all.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How quickly do you respond if I have a question?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Most questions are answered within a few hours during business days. You can message your dedicated bookkeeper directly via our platform, email, or schedule a call. We aim for same-day responses on all routine inquiries.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do I need to connect my bank accounts?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Bank connections make everything faster and more accurate, but they're not mandatory. You can also upload statements manually, email documents, or use our secure portal. We'll work with whatever method is most comfortable for you.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What software do you use?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>We primarily use QuickBooks Online and Xero — both leading cloud platforms. We also support Sage, Wave, and FreshBooks. If you're on a legacy system, we'll advise on the best migration path and handle the transition.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can you take over from my existing bookkeeper?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Yes. We handle the transition completely — reviewing prior work, correcting any errors, and ensuring a clean handoff. Most transitions are completed within 2 weeks with zero disruption to your business.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do you do catch-up bookkeeping for businesses behind on their books?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Absolutely. We frequently help businesses catch up on months or even years of bookkeeping. We prioritize the most recent periods first so you have current financials for decision-making and tax filing as quickly as possible.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How much does monthly bookkeeping cost?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Starting at $199/month for small businesses. Pricing scales with transaction volume and complexity. We provide a fixed monthly quote upfront so there are no surprises — ever. Book a free consultation to get your custom quote.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sp-cta">
+      <div class="container">
+        <div class="sp-cta-inner reveal">
+          <span class="section-tag">Get Started</span>
+          <h2>Join Thousands of Canadian Business Owners Who Trust Key Metrics With Their Books</h2>
+          <p>Get your first month's financial statements free. No commitment, no credit card required — just clean books and complete clarity.</p>
+          <div class="sp-cta-btns">
+            <a href="../contact.html" class="btn btn-teal btn-lg">Get Started <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="../contact.html" class="btn btn-outline-dark btn-lg">Book a Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED SERVICES -->
+    <section class="sp-related">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Explore More</span>
+          <h2 class="section-title">Related Services</h2>
+        </div>
+        <div class="sp-related-grid">
+          <div class="sp-related-card reveal delay-100">
+            <div class="sp-related-icon">&#128179;</div>
+            <h4>Payroll Services</h4>
+            <p>End-to-end payroll that integrates seamlessly with your books.</p>
+            <a href="payroll.html" class="sp-related-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+          <div class="sp-related-card reveal delay-200">
+            <div class="sp-related-icon">&#127970;</div>
+            <h4>Corporate Tax Filing</h4>
+            <p>Great books make for great T2 returns — seamless integration.</p>
+            <a href="corporate-tax.html" class="sp-related-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+          <div class="sp-related-card reveal delay-300">
+            <div class="sp-related-icon">&#128188;</div>
+            <h4>Business Advisory</h4>
+            <p>Turn your financial data into strategic, growth-driving decisions.</p>
+            <a href="business-advisory.html" class="sp-related-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-main"><div class="container"><div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../../index.html" class="navbar-logo"><img src="../../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img"><span class="logo-text">Key Metrics<span>Accounting</span></span></a>
+        <p>Canada's premier accounting and financial advisory firm. Expert strategy, uncompromising service.</p>
+        <div class="footer-socials"><a href="#" class="fsoc">f</a><a href="#" class="fsoc">in</a><a href="#" class="fsoc">&#10005;</a><a href="#" class="fsoc">&#9678;</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="../../index.html">Home</a></li><li><a href="../services.html">Services</a></li>
+        <li><a href="../../index.html#about">About</a></li><li><a href="../contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Our Services</h4><ul>
+        <li><a href="tax-strategy.html">Tax Strategy</a></li>
+        <li><a href="corporate-tax.html">Corporate Tax</a></li>
+        <li><a href="personal-tax.html">Personal Tax</a></li>
+        <li><a href="bookkeeping.html">Bookkeeping</a></li>
+        <li><a href="payroll.html">Payroll</a></li>
+        <li><a href="business-advisory.html">Business Advisory</a></li>
+        <li><a href="cra-audit.html">CRA Representation</a></li>
+        <li><a href="wealth-management.html">Wealth Management</a></li>
+      </ul></div>
+      <div class="footer-col footer-contact-col"><h4>Contact Us</h4>
+        <div class="fcontact-list">
+          <div class="fcontact-item"><span class="fci">&#128205;</span><div><strong>Address</strong><span>4310 104 Ave NE<br/>Calgary, AB T3J 1W5</span></div></div>
+          <div class="fcontact-item"><span class="fci">&#128222;</span><div><strong>Phone</strong><a href="tel:+18005559999">1-800-555-9999</a></div></div>
+          <div class="fcontact-item"><span class="fci">&#9993;</span><div><strong>Email</strong><a href="mailto:hello@keymetricsaccounting.ca">hello@keymetricsaccounting.ca</a></div></div>
+          <div class="fcontact-item"><span class="fci">&#128336;</span><div><strong>Hours</strong><span>Mon&ndash;Fri: 8 AM &ndash; 7 PM MST</span></div></div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container">
+      <p>&copy; 2025 Key Metrics Accounting Corp. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div></div>
+  </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">&#8593;</button>
+  <script src="../../js/main.js"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,hi,pa,zh-CN,ar,tl,ur,de,pt,ko,ja',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+    function triggerTranslate(lang) {
+      var combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        return;
+      }
+      var domain = location.hostname;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/;domain=' + domain;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/';
+      location.reload();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var wrap = document.querySelector('.custom-lang');
+      var btn = document.querySelector('.custom-lang-btn');
+      var links = document.querySelectorAll('.custom-lang-dd a');
+      if (!wrap || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        wrap.classList.toggle('open');
+      });
+      document.addEventListener('click', function() { wrap.classList.remove('open'); });
+      links.forEach(function(a) {
+        a.addEventListener('click', function() {
+          var lang = a.getAttribute('data-lang');
+          triggerTranslate(lang);
+          btn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg> ' + (lang === 'zh-CN' ? 'ZH' : lang.toUpperCase());
+          wrap.classList.remove('open');
+        });
+      });
+    });
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

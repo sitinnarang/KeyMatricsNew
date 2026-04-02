@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog &amp; Insights | Key Metrics Accounting — Calgary, AB</title>
+  <meta name="description" content="Expert accounting insights, tax tips, and financial strategies for Canadian small businesses. Stay informed with the Key Metrics Accounting blog." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    /* ── Blog Page Styles ── */
+
+    .blog-hero {
+      position: relative;
+      padding: calc(var(--nav-h) + 72px) 0 80px;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg) 50%, var(--bg-2) 100%);
+      overflow: hidden;
+      text-align: center;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(46,209,205,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .blog-hero-inner {
+      position: relative; z-index: 2;
+      max-width: 700px; margin: 0 auto;
+    }
+    .blog-hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800; color: var(--dark);
+      line-height: 1.1; margin-bottom: 18px; letter-spacing: -0.03em;
+    }
+    .blog-hero p {
+      font-size: 1.05rem; color: var(--text-m);
+      line-height: 1.75; margin-bottom: 32px;
+    }
+
+    /* Filter tabs */
+    .blog-filters {
+      display: flex; gap: 8px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 0;
+    }
+    .blog-filter {
+      padding: 8px 20px; border-radius: 60px;
+      font-size: 0.82rem; font-weight: 600;
+      background: var(--bg); color: var(--text-m);
+      border: 1.5px solid var(--border);
+      cursor: pointer; transition: var(--trans);
+    }
+    .blog-filter:hover, .blog-filter.active {
+      background: var(--teal); color: #fff;
+      border-color: var(--teal);
+    }
+
+    /* Blog grid */
+    .blog-section { padding: 80px 0; }
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    /* Blog card */
+    .blog-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--trans);
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,60,71,0.1);
+      border-color: rgba(46,209,205,0.35);
+    }
+    .blog-card-img {
+      width: 100%; height: 180px;
+      object-fit: cover; display: block;
+      background: var(--bg-2);
+    }
+    .blog-card-body { padding: 24px; }
+    .blog-card-tags {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .blog-tag {
+      font-size: 0.68rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .blog-tag.accounting { background: var(--teal-pale); color: var(--teal-dk); }
+    .blog-tag.tax { background: #fef3c7; color: #92400e; }
+    .blog-tag.payroll { background: #ede9fe; color: #5b21b6; }
+    .blog-tag.business { background: #dbeafe; color: #1e40af; }
+    .blog-tag.planning { background: #fce7f3; color: #9d174d; }
+    .blog-card h3 {
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--dark); line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .blog-card h3 a { color: inherit; transition: color 0.2s; }
+    .blog-card h3 a:hover { color: var(--teal-dk); }
+    .blog-card-excerpt {
+      font-size: 0.82rem; color: var(--text-m);
+      line-height: 1.65; margin-bottom: 16px;
+    }
+    .blog-card-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.75rem; color: var(--text-f);
+    }
+    .blog-read-more {
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--teal-dk);
+      display: flex; align-items: center; gap: 4px;
+      transition: gap 0.2s;
+    }
+    .blog-card:hover .blog-read-more { gap: 8px; }
+
+    /* Featured post (first card spans full width) */
+    .blog-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .blog-card.featured .blog-card-img { height: 100%; min-height: 280px; }
+    .blog-card.featured .blog-card-body {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 32px;
+    }
+    .blog-card.featured h3 { font-size: 1.15rem; }
+
+    /* Sidebar */
+    .blog-sidebar { position: sticky; top: calc(var(--nav-h) + 20px); }
+    .blog-sidebar-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin-bottom: 24px;
+    }
+    .blog-sidebar-card h4 {
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-sidebar-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .blog-sidebar-list li a {
+      font-size: 0.82rem; color: var(--text);
+      line-height: 1.5; display: block;
+      transition: color 0.2s;
+    }
+    .blog-sidebar-list li a:hover { color: var(--teal-dk); }
+    .blog-sidebar-list li a strong {
+      display: block; color: var(--dark);
+      font-weight: 600; margin-bottom: 2px;
+    }
+    .blog-sidebar-list li a span {
+      font-size: 0.72rem; color: var(--text-f);
+    }
+
+    /* Newsletter card */
+    .blog-newsletter {
+      background: var(--grad);
+      border: none;
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .blog-newsletter h4 {
+      color: #fff; border: none; padding: 0;
+      margin-bottom: 10px;
+    }
+    .blog-newsletter p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .blog-nl-form {
+      display: flex; gap: 8px;
+    }
+    .blog-nl-input {
+      flex: 1; padding: 10px 16px;
+      border-radius: 60px; border: none;
+      font-size: 0.82rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .blog-nl-btn {
+      padding: 10px 20px;
+      background: var(--teal);
+      color: #fff; border: none;
+      border-radius: 60px;
+      font-size: 0.8rem; font-weight: 700;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: var(--trans);
+    }
+    .blog-nl-btn:hover { background: var(--teal-dk); }
+
+    /* CTA */
+    .blog-cta {
+      padding: 80px 0;
+      background: var(--bg-2);
+      text-align: center;
+    }
+    .blog-cta-inner { max-width: 600px; margin: 0 auto; }
+    .blog-cta h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .blog-cta p {
+      color: var(--text-m); font-size: 0.95rem;
+      line-height: 1.75; margin-bottom: 28px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .blog-layout { grid-template-columns: 1fr; }
+      .blog-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-card.featured { grid-template-columns: 1fr; }
+      .blog-card.featured .blog-card-img { height: 200px; min-height: auto; }
+      .blog-sidebar { grid-template-columns: 1fr; }
+      .blog-nl-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header role="banner">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-inner">
+        <a href="../index.html" class="navbar-logo" aria-label="Key Metrics Accounting Home">
+          <img src="../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img">
+          <span class="logo-text">Key Metrics<span>Accounting</span></span>
+        </a>
+        <ul class="navbar-nav" role="list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="automation.html" class="nav-link">Automation</a></li>
+          <li><a href="small-business.html" class="nav-link">Small Business</a></li>
+          <li><a href="../index.html#about" class="nav-link">About</a></li>
+          <li><a href="../index.html#team" class="nav-link">Team</a></li>
+          <li><a href="blog.html" class="nav-link active">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div id="google_translate_element"></div>
+        <div class="custom-lang notranslate">
+          <button class="custom-lang-btn" aria-label="Select language">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            EN
+          </button>
+          <div class="custom-lang-dd">
+            <a data-lang="en">English</a>
+            <a data-lang="fr">Fran&ccedil;ais</a>
+            <a data-lang="es">Espa&ntilde;ol</a>
+            <a data-lang="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</a>
+            <a data-lang="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624;</a>
+            <a data-lang="zh-CN">&#20013;&#25991;</a>
+            <a data-lang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+            <a data-lang="ur">&#1575;&#1585;&#1583;&#1608;</a>
+            <a data-lang="tl">Filipino</a>
+            <a data-lang="de">Deutsch</a>
+            <a data-lang="pt">Portugu&ecirc;s</a>
+            <a data-lang="ko">&#54620;&#44397;&#50612;</a>
+            <a data-lang="ja">&#26085;&#26412;&#35486;</a>
+          </div>
+        </div>
+        <div class="theme-toggle notranslate">
+          <button class="theme-toggle-btn" aria-label="Theme settings">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+          <div class="theme-dd">
+            <div class="theme-dd-title">Theme</div>
+            <div class="theme-dd-opt active" data-mode="light"><span class="theme-dd-swatch light"></span> Light</div>
+            <div class="theme-dd-opt" data-mode="dark"><span class="theme-dd-swatch dark"></span> Dark</div>
+            <div class="theme-dd-opt" data-mode="blue"><span class="theme-dd-swatch blue"></span> Blue</div>
+          </div>
+        </div>
+        <div class="navbar-cta">
+          <a href="contact.html" class="btn btn-dark">Free Consultation
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="automation.html">Automation</a></li>
+        <li><a href="small-business.html">Small Business</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blog-hero">
+      <div class="container">
+        <div class="blog-hero-inner reveal">
+          <span class="section-tag">Blog</span>
+          <h1>Insights &amp; <span class="teal-text">Resources</span></h1>
+          <p>Expert accounting insights, tax-saving strategies, and practical financial guidance for Canadian small businesses and individuals.</p>
+          <div class="blog-filters">
+            <button class="blog-filter active">All</button>
+            <button class="blog-filter">Accounting</button>
+            <button class="blog-filter">Tax</button>
+            <button class="blog-filter">Payroll</button>
+            <button class="blog-filter">Business</button>
+            <button class="blog-filter">Planning</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG GRID + SIDEBAR -->
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-layout">
+
+          <!-- Posts -->
+          <div class="blog-grid">
+
+            <!-- Featured Post -->
+            <article class="blog-card featured reveal">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80" alt="Payroll services and compliance" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag tax">Tax</span>
+                  <span class="blog-tag business">Business</span>
+                </div>
+                <h3><a href="blog/payroll-services-calgary.html">Why Are More Businesses Switching to Professional Payroll Services in Calgary for Compliance and Efficiency?</a></h3>
+                <p class="blog-card-excerpt">Payroll compliance in Canada is getting more complex every year. We break down why Calgary businesses are outsourcing payroll — and what to look for in a provider.</p>
+                <div class="blog-card-meta">
+                  <span>March 28, 2026</span>
+                  <a href="blog/payroll-services-calgary.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card reveal delay-100">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80" alt="Accountant reviewing financial data" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag accounting">Accounting</span>
+                </div>
+                <h3><a href="blog/best-accountant-calgary.html">Why Hiring the Best Accountant in Calgary Matters for Financial Growth</a></h3>
+                <p class="blog-card-excerpt">Not all accountants are equal. Here's how to find the right CPA firm for your business — and what separates great accounting from just okay.</p>
+                <div class="blog-card-meta">
+                  <span>March 21, 2026</span>
+                  <a href="blog/best-accountant-calgary.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card reveal delay-200">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=600&auto=format&fit=crop&q=80" alt="Bookkeeping and financial records" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag accounting">Accounting</span>
+                </div>
+                <h3><a href="blog/bookkeeping-services-essential.html">Why Are Bookkeeping Services Essential for Accurate Financial Growth?</a></h3>
+                <p class="blog-card-excerpt">Messy books cost you money. We explain how professional bookkeeping pays for itself — and what to expect from a quality service.</p>
+                <div class="blog-card-meta">
+                  <span>March 14, 2026</span>
+                  <a href="blog/bookkeeping-services-essential.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="blog-card reveal delay-100">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&auto=format&fit=crop&q=80" alt="Small business team meeting" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag business">Business</span>
+                </div>
+                <h3><a href="blog/small-business-accountants-calgary.html">Why Is Hiring Small Business Accountants the Smartest Move for Financial Clarity?</a></h3>
+                <p class="blog-card-excerpt">Small business owners wear many hats — accounting shouldn't be one of them. Here's why dedicated expertise matters from day one.</p>
+                <div class="blog-card-meta">
+                  <span>March 7, 2026</span>
+                  <a href="blog/small-business-accountants-calgary.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 5 -->
+            <article class="blog-card reveal delay-200">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=600&auto=format&fit=crop&q=80" alt="Business growth charts and analytics" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag accounting">Accounting</span>
+                  <span class="blog-tag tax">Tax</span>
+                </div>
+                <h3><a href="blog/accounting-services-business-growth.html">How Do Accounting Services Contribute to Business Growth and Financial Efficiency?</a></h3>
+                <p class="blog-card-excerpt">Beyond compliance — how strategic accounting drives real revenue growth, reduces tax burden, and builds long-term business value.</p>
+                <div class="blog-card-meta">
+                  <span>February 28, 2026</span>
+                  <a href="blog/accounting-services-business-growth.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 6 -->
+            <article class="blog-card reveal delay-100">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=80" alt="Financial planning and consulting" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag planning">Planning</span>
+                </div>
+                <h3><a href="blog/financial-consultant-services.html">Why Are Financial Consultant Services Important for Smart Financial Planning?</a></h3>
+                <p class="blog-card-excerpt">Financial planning isn't just for the wealthy. We explain how fractional CFO services give small businesses enterprise-level financial strategy.</p>
+                <div class="blog-card-meta">
+                  <span>February 21, 2026</span>
+                  <a href="blog/financial-consultant-services.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 7 -->
+            <article class="blog-card reveal delay-200">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&auto=format&fit=crop&q=80" alt="Successful business professionals" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag business">Business</span>
+                </div>
+                <h3><a href="blog/successful-companies-best-accountants.html">Why Do Successful Companies Choose the Best Accountants for Long-Term Growth?</a></h3>
+                <p class="blog-card-excerpt">The relationship between business growth and accounting quality is direct and measurable. Here's what the data shows.</p>
+                <div class="blog-card-meta">
+                  <span>February 14, 2026</span>
+                  <a href="blog/successful-companies-best-accountants.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 8 -->
+            <article class="blog-card reveal delay-100">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop&q=80" alt="Payroll processing and management" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag payroll">Payroll</span>
+                </div>
+                <h3><a href="blog/professional-payroll-services.html">How Can Professional Payroll Services Help Businesses Manage Finances Efficiently?</a></h3>
+                <p class="blog-card-excerpt">CRA remittance penalties, T4 deadlines, and multi-province compliance — why payroll is the #1 most outsourced financial function.</p>
+                <div class="blog-card-meta">
+                  <span>February 7, 2026</span>
+                  <a href="blog/professional-payroll-services.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 9 -->
+            <article class="blog-card reveal delay-200">
+              <img class="blog-card-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&auto=format&fit=crop&q=80" alt="Calgary small business accountants" loading="lazy" />
+              <div class="blog-card-body">
+                <div class="blog-card-tags">
+                  <span class="blog-tag tax">Tax</span>
+                  <span class="blog-tag accounting">Accounting</span>
+                </div>
+                <h3><a href="blog/best-calgary-small-business-accountants.html">Who Are the Best Calgary Small Business Accountants for Growing Companies?</a></h3>
+                <p class="blog-card-excerpt">A practical guide to evaluating CPA firms in Calgary — what to ask, what to look for, and red flags to avoid.</p>
+                <div class="blog-card-meta">
+                  <span>January 31, 2026</span>
+                  <a href="blog/best-calgary-small-business-accountants.html" class="blog-read-more">Read More &rsaquo;</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="blog-sidebar">
+
+            <!-- Popular Posts -->
+            <div class="blog-sidebar-card">
+              <h4>Popular Articles</h4>
+              <ul class="blog-sidebar-list">
+                <li><a href="blog/best-accountant-calgary.html"><strong>Why Hiring the Best Accountant in Calgary Matters</strong><span>12 min read</span></a></li>
+                <li><a href="blog/small-business-accountants-calgary.html"><strong>Hiring Small Business Accountants for Financial Clarity</strong><span>8 min read</span></a></li>
+                <li><a href="blog/bookkeeping-services-essential.html"><strong>Why Bookkeeping Services Are Essential for Growth</strong><span>6 min read</span></a></li>
+                <li><a href="blog/accounting-services-business-growth.html"><strong>How Accounting Services Drive Business Growth</strong><span>10 min read</span></a></li>
+                <li><a href="blog/best-calgary-small-business-accountants.html"><strong>Best Calgary Small Business Accountants</strong><span>9 min read</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="blog-sidebar-card">
+              <h4>Categories</h4>
+              <ul class="blog-sidebar-list">
+                <li><a href="blog/best-accountant-calgary.html">Accounting <span>(12 articles)</span></a></li>
+                <li><a href="blog/payroll-services-calgary.html">Tax Strategy <span>(9 articles)</span></a></li>
+                <li><a href="blog/professional-payroll-services.html">Payroll <span>(5 articles)</span></a></li>
+                <li><a href="blog/successful-companies-best-accountants.html">Business Growth <span>(8 articles)</span></a></li>
+                <li><a href="blog/financial-consultant-services.html">Financial Planning <span>(6 articles)</span></a></li>
+                <li><a href="blog/best-calgary-small-business-accountants.html">CRA &amp; Compliance <span>(4 articles)</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="blog-sidebar-card blog-newsletter">
+              <h4>Stay Updated</h4>
+              <p>Get the latest tax tips, accounting insights, and financial strategies delivered to your inbox monthly.</p>
+              <form class="blog-nl-form" onsubmit="return false;">
+                <input type="email" class="blog-nl-input" placeholder="Your email" aria-label="Email address" />
+                <button type="submit" class="blog-nl-btn">Subscribe</button>
+              </form>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="blog-cta">
+      <div class="container">
+        <div class="blog-cta-inner reveal">
+          <span class="section-tag">Need Expert Help?</span>
+          <h2>Have a Financial Question?</h2>
+          <p>Our team of CPAs is ready to help. Book a free consultation and get personalized advice for your business or personal finances.</p>
+          <a href="contact.html" class="btn btn-dark">Book Free Consultation
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="../index.html" class="navbar-logo" aria-label="Key Metrics Accounting Home">
+              <img src="../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img">
+              <span class="logo-text">Key Metrics<span>Accounting</span></span>
+            </a>
+            <p>Canada's premier accounting and financial advisory firm. Expert strategy, uncompromising service.</p>
+            <div class="footer-socials">
+              <a href="#" class="fsoc">f</a><a href="#" class="fsoc">in</a><a href="#" class="fsoc">&#10005;</a><a href="#" class="fsoc">&#9678;</a>
+            </div>
+          </div>
+          <div class="footer-col"><h4>Quick Links</h4><ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul></div>
+          <div class="footer-col"><h4>Our Services</h4><ul>
+            <li><a href="services/tax-strategy.html">Tax Strategy</a></li>
+            <li><a href="services/corporate-tax.html">Corporate Tax</a></li>
+            <li><a href="services/personal-tax.html">Personal Tax</a></li>
+            <li><a href="services/bookkeeping.html">Bookkeeping</a></li>
+            <li><a href="services/payroll.html">Payroll</a></li>
+            <li><a href="services/business-advisory.html">Business Advisory</a></li>
+            <li><a href="services/cra-audit.html">CRA Representation</a></li>
+            <li><a href="services/wealth-management.html">Wealth Management</a></li>
+          </ul></div>
+          <div class="footer-col footer-contact-col"><h4>Contact Us</h4>
+            <div class="fcontact-list">
+              <div class="fcontact-item"><span class="fci">&#128205;</span><div><strong>Address</strong><span>4310 104 Ave NE<br/>Calgary, AB T3J 1W5</span></div></div>
+              <div class="fcontact-item"><span class="fci">&#128222;</span><div><strong>Phone</strong><a href="tel:+18005559999">1-800-555-9999</a></div></div>
+              <div class="fcontact-item"><span class="fci">&#9993;</span><div><strong>Email</strong><a href="mailto:hello@keymetricsaccounting.ca">hello@keymetricsaccounting.ca</a></div></div>
+              <div class="fcontact-item"><span class="fci">&#128336;</span><div><strong>Hours</strong><span>Mon&ndash;Fri: 8 AM &ndash; 7 PM MST</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><div class="container">
+      <p>&copy; 2025 Key Metrics Accounting Corp. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div></div>
+  </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">&#8593;</button>
+  <script src="../js/main.js"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,hi,pa,zh-CN,ar,tl,ur,de,pt,ko,ja',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+    function triggerTranslate(lang) {
+      var combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        return;
+      }
+      var domain = location.hostname;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/;domain=' + domain;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/';
+      location.reload();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var wrap = document.querySelector('.custom-lang');
+      var btn = document.querySelector('.custom-lang-btn');
+      var links = document.querySelectorAll('.custom-lang-dd a');
+      if (!wrap || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        wrap.classList.toggle('open');
+      });
+      document.addEventListener('click', function() { wrap.classList.remove('open'); });
+      links.forEach(function(a) {
+        a.addEventListener('click', function() {
+          var lang = a.getAttribute('data-lang');
+          triggerTranslate(lang);
+          btn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg> ' + (lang === 'zh-CN' ? 'ZH' : lang.toUpperCase());
+          wrap.classList.remove('open');
+        });
+      });
+    });
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

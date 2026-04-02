@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRA Audit &amp; Representation Services in Calgary | Key Metrics Accounting</title>
+  <meta name="description" content="Expert CRA audit defense and representation in Calgary, AB. We handle desk audits, field audits, reassessment appeals, voluntary disclosures, and tax debt negotiation — protecting Canadian businesses and individuals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/service-page.css" />
+
+  <style>
+    /* ── CRA Audit Page Extras ── */
+
+    /* Types of audits grid */
+    .cra-types {
+      padding: 100px 0;
+    }
+    .cra-types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .cra-type-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: var(--trans);
+      position: relative;
+      overflow: hidden;
+    }
+    .cra-type-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--grad-teal);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .cra-type-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,60,71,0.1);
+      border-color: rgba(46,209,205,0.4);
+    }
+    .cra-type-card:hover::before { opacity: 1; }
+    .cra-type-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .cra-type-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .cra-type-card p {
+      font-size: 0.85rem;
+      color: var(--text-m);
+      line-height: 1.7;
+    }
+    .cra-type-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .cra-type-badge.high { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .cra-type-badge.medium { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+    .cra-type-badge.low { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+
+    /* What CRA examines */
+    .cra-examines {
+      padding: 100px 0;
+      background: var(--bg-2);
+    }
+    .cra-examines-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 52px;
+    }
+    .cra-examines-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .cra-examines-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .cra-examines-list li .cei {
+      width: 44px; height: 44px;
+      background: var(--teal-pale);
+      border: 1.5px solid rgba(46,209,205,0.3);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .cra-examines-list li strong {
+      display: block;
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .cra-warning-box {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-left: 4px solid #dc2626;
+      border-radius: 16px;
+      padding: 28px 28px;
+    }
+    .cra-warning-box h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cra-warning-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cra-warning-box ul li {
+      font-size: 0.86rem;
+      color: var(--text);
+      line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .cra-warning-box ul li::before {
+      content: '⚠';
+      flex-shrink: 0;
+      font-size: 0.85rem;
+    }
+
+    /* Results / case studies */
+    .cra-results {
+      padding: 100px 0;
+    }
+    .cra-results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .cra-result-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: var(--trans);
+    }
+    .cra-result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .cra-result-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--teal-dk);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .cra-result-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .cra-result-card p {
+      font-size: 0.84rem;
+      color: var(--text-m);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .cra-result-outcome {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #16a34a;
+    }
+
+    /* Testimonials */
+    .cra-test {
+      padding: 100px 0;
+      background: var(--bg-2);
+    }
+    .cra-test-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 52px;
+    }
+    .cra-test-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      transition: var(--trans);
+    }
+    .cra-test-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .cra-test-stars { color: #f59e0b; font-size: 1rem; letter-spacing: 2px; margin-bottom: 16px; }
+    .cra-test-quote {
+      font-size: 0.93rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .cra-test-author { display: flex; align-items: center; gap: 14px; }
+    .cra-test-avatar {
+      width: 48px; height: 48px;
+      background: var(--teal-pale);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 700; color: var(--teal-dk);
+    }
+    .cra-test-name { font-size: 0.9rem; font-weight: 700; color: var(--dark); }
+    .cra-test-role { font-size: 0.78rem; color: var(--text-f); }
+
+    /* GAAP compliance section */
+    .cra-gaap {
+      padding: 100px 0;
+    }
+    .cra-gaap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .cra-gaap h3 {
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .cra-gaap p {
+      font-size: 0.9rem;
+      color: var(--text-m);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .cra-gaap-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .cra-gaap-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .cra-gaap-list li::before {
+      content: '✓';
+      color: var(--teal-dk);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .cra-gaap-visual {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+    }
+    .cra-gaap-visual h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cra-gaap-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cra-gaap-item:last-child { border-bottom: none; }
+    .cra-gaap-item-icon {
+      width: 40px; height: 40px;
+      background: var(--teal-pale);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .cra-gaap-item-text { flex: 1; font-size: 0.84rem; color: var(--text); font-weight: 500; }
+    .cra-gaap-item-status {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #16a34a;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .cra-types-grid { grid-template-columns: repeat(2, 1fr); }
+      .cra-results-grid { grid-template-columns: repeat(2, 1fr); }
+      .cra-gaap-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .cra-types-grid { grid-template-columns: 1fr; }
+      .cra-examines-grid { grid-template-columns: 1fr; }
+      .cra-results-grid { grid-template-columns: 1fr; }
+      .cra-test-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header role="banner">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-inner">
+        <a href="../../index.html" class="navbar-logo">
+          <img src="../../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img">
+          <span class="logo-text">Key Metrics<span>Accounting</span></span>
+        </a>
+        <ul class="navbar-nav" role="list">
+          <li><a href="../../index.html" class="nav-link">Home</a></li>
+          <li><a href="../services.html" class="nav-link active">Services</a></li>
+          <li><a href="../automation.html" class="nav-link">Automation</a></li>
+          <li><a href="../small-business.html" class="nav-link">Small Business</a></li>
+          <li><a href="../../index.html#about" class="nav-link">About</a></li>
+          <li><a href="../../index.html#team" class="nav-link">Team</a></li>
+          <li><a href="../blog.html" class="nav-link">Blog</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div id="google_translate_element"></div>
+        <div class="custom-lang notranslate">
+          <button class="custom-lang-btn" aria-label="Select language">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            EN
+          </button>
+          <div class="custom-lang-dd">
+            <a data-lang="en">English</a>
+            <a data-lang="fr">Fran&ccedil;ais</a>
+            <a data-lang="es">Espa&ntilde;ol</a>
+            <a data-lang="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</a>
+            <a data-lang="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624;</a>
+            <a data-lang="zh-CN">&#20013;&#25991;</a>
+            <a data-lang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+            <a data-lang="ur">&#1575;&#1585;&#1583;&#1608;</a>
+            <a data-lang="tl">Filipino</a>
+            <a data-lang="de">Deutsch</a>
+            <a data-lang="pt">Portugu&ecirc;s</a>
+            <a data-lang="ko">&#54620;&#44397;&#50612;</a>
+            <a data-lang="ja">&#26085;&#26412;&#35486;</a>
+          </div>
+        </div>
+        <div class="theme-toggle notranslate">
+          <button class="theme-toggle-btn" aria-label="Theme settings">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+          <div class="theme-dd">
+            <div class="theme-dd-title">Theme</div>
+            <div class="theme-dd-opt active" data-mode="light"><span class="theme-dd-swatch light"></span> Light</div>
+            <div class="theme-dd-opt" data-mode="dark"><span class="theme-dd-swatch dark"></span> Dark</div>
+            <div class="theme-dd-opt" data-mode="blue"><span class="theme-dd-swatch blue"></span> Blue</div>
+          </div>
+        </div>
+        <div class="navbar-cta">
+          <a href="../contact.html" class="btn btn-dark">Free Consultation
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../services.html" class="nav-link active">Services</a>
+      <a href="../automation.html" class="nav-link">Automation</a>
+      <a href="../small-business.html" class="nav-link">Small Business</a>
+      <a href="../../index.html#about" class="nav-link">About</a>
+      <a href="../contact.html" class="nav-link">Contact</a>
+      <a href="../contact.html" class="btn btn-dark">Free Consultation</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="sp-hero">
+      <div class="container">
+        <div class="sp-hero-inner">
+          <nav class="sp-breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <a href="../services.html">Services</a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>CRA Audit &amp; Representation</span>
+          </nav>
+          <div class="sp-hero-icon reveal">&#128737;</div>
+          <h1 class="reveal">Audit Representation Services in <span class="teal-text">Calgary, AB</span></h1>
+          <p class="reveal delay-100">When the Canada Revenue Agency audits your business, it closely examines your books and records to ensure they support the amounts filed in your tax returns. Having expert representation isn't optional — it's essential. Key Metrics Accounting has been defending Canadian taxpayers for over 18 years.</p>
+          <div class="sp-hero-actions reveal delay-200">
+            <a href="../contact.html" class="btn btn-teal btn-lg">Get Immediate Help
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="tel:+18005559999" class="btn btn-outline-dark btn-lg">Call 1-800-555-9999</a>
+          </div>
+          <div class="sp-hero-stat reveal delay-300">
+            <span class="sp-hero-stat-num">94%</span>
+            <span class="sp-hero-stat-label">of represented audits close<br/>with no additional tax assessed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="sp-overview" id="overview">
+      <div class="container">
+        <div class="sp-overview-grid">
+          <div class="sp-overview-left reveal-left">
+            <span class="section-tag">Why It Matters</span>
+            <h2 class="section-title">A CRA Audit Is Serious — Having the Right Team Is Everything</h2>
+            <p>A CRA audit is one of the most stressful financial events a Canadian taxpayer can face. Whether you've received a desk audit letter or a field auditor is requesting access to your business records, the stakes are high. CRA auditors are trained to identify discrepancies, and without a knowledgeable advocate, even minor misunderstandings can escalate into significant reassessments, penalties, and interest charges that compound quickly.</p>
+            <p>The role of experienced accountants in Calgary is to assist and advise business owners on every aspect of the audit process — verifying accuracy of financial statements, ensuring compliance with Canadian GAAP, providing guidance on internal control systems, and representing clients throughout the entire audit. Key Metrics Accounting has been navigating CRA audits for over 18 years. We know how auditors think, what they're looking for, and exactly how to respond.</p>
+            <ul class="sp-check-list">
+              <li>CRA audit response strategy and management</li>
+              <li>T1 and T2 reassessment appeals</li>
+              <li>Voluntary Disclosure Program (VDP) applications</li>
+              <li>Taxpayer Relief applications for penalty/interest waiver</li>
+              <li>Tax debt negotiation and payment arrangements</li>
+              <li>CRA collections defense (garnishments, liens, freezes)</li>
+              <li>GST/HST audit and SR&amp;ED review representation</li>
+              <li>Tax Court of Canada representation</li>
+            </ul>
+          </div>
+          <div class="sp-overview-right reveal-right">
+            <div class="sp-highlight-card">
+              <div class="sp-highlight-icon">&#128274;</div>
+              <div>
+                <h4>We Handle Everything</h4>
+                <p>You never speak to CRA directly. We manage all communications, document submissions, and meetings on your behalf.</p>
+              </div>
+            </div>
+            <div class="sp-highlight-card">
+              <div class="sp-highlight-icon">&#9889;</div>
+              <div>
+                <h4>24-Hour Response</h4>
+                <p>Contact us within hours of receiving an audit notice. Early intervention is the single most important factor in audit outcomes.</p>
+              </div>
+            </div>
+            <div class="sp-highlight-card">
+              <div class="sp-highlight-icon">&#128203;</div>
+              <div>
+                <h4>Battle-Tested Strategy</h4>
+                <p>Proven audit response frameworks built over 18+ years across every type of CRA audit at every complexity level.</p>
+              </div>
+            </div>
+            <div class="sp-highlight-card">
+              <div class="sp-highlight-icon">&#128176;</div>
+              <div>
+                <h4>No Surprises on Fees</h4>
+                <p>Fixed-fee audit defense packages available. You'll know exactly what representation costs before we begin.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPES OF AUDITS -->
+    <section class="cra-types">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Types of CRA Audits</span>
+          <h2 class="section-title">We Handle <span class="teal-text">Every Type</span> of CRA Audit</h2>
+          <p class="section-subtitle">From routine desk reviews to full-scope field audits — our team has represented clients across every audit category CRA conducts.</p>
+        </div>
+        <div class="cra-types-grid">
+          <div class="cra-type-card reveal delay-100">
+            <span class="cra-type-icon">&#128231;</span>
+            <h3>Desk Audit (Mail Review)</h3>
+            <p>CRA requests specific documents or clarification by mail. The most common type — often triggered by inconsistencies between your return and employer/third-party filings. Typically resolves in 4–12 weeks with proper documentation.</p>
+            <span class="cra-type-badge low">Common</span>
+          </div>
+          <div class="cra-type-card reveal delay-200">
+            <span class="cra-type-icon">&#128222;</span>
+            <h3>Phone Audit</h3>
+            <p>CRA contacts you directly to verify deductions, credits, or reported income. Often targets home office expenses, vehicle claims, and charitable donations. What you say on these calls can expand the audit scope.</p>
+            <span class="cra-type-badge medium">Moderate Risk</span>
+          </div>
+          <div class="cra-type-card reveal delay-300">
+            <span class="cra-type-icon">&#127970;</span>
+            <h3>Field Audit</h3>
+            <p>A CRA auditor visits your business premises to examine records in person. The most thorough and invasive audit type — often covering multiple tax years and targeting revenue reporting, payroll, and expense documentation.</p>
+            <span class="cra-type-badge high">High Stakes</span>
+          </div>
+          <div class="cra-type-card reveal delay-100">
+            <span class="cra-type-icon">&#129534;</span>
+            <h3>GST/HST Audit</h3>
+            <p>Focused review of your GST/HST filings, input tax credits, and remittance history. CRA examines whether you've correctly collected, reported, and remitted sales tax — and whether your ITC claims are legitimate and documented.</p>
+            <span class="cra-type-badge medium">Moderate Risk</span>
+          </div>
+          <div class="cra-type-card reveal delay-200">
+            <span class="cra-type-icon">&#128300;</span>
+            <h3>SR&amp;ED Claim Review</h3>
+            <p>Scientific Research and Experimental Development credit claims undergo enhanced scrutiny. CRA may request technical documentation, project narratives, and evidence that work qualifies under the SR&amp;ED program criteria.</p>
+            <span class="cra-type-badge high">High Stakes</span>
+          </div>
+          <div class="cra-type-card reveal delay-300">
+            <span class="cra-type-icon">&#128101;</span>
+            <h3>Third-Party Audit</h3>
+            <p>CRA audits a business associate, supplier, or client — and requests your records as part of their investigation. Even though you aren't the target, your responses can trigger a separate audit of your own affairs.</p>
+            <span class="cra-type-badge medium">Moderate Risk</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT CRA EXAMINES -->
+    <section class="cra-examines">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Know What's Coming</span>
+          <h2 class="section-title">What CRA Examines <span class="teal-text">During an Audit</span></h2>
+          <p class="section-subtitle">Understanding what auditors look for helps you understand why expert representation matters at every stage.</p>
+        </div>
+        <div class="cra-examines-grid">
+          <div class="reveal-left">
+            <ul class="cra-examines-list">
+              <li>
+                <div class="cei">&#128200;</div>
+                <div><strong>Financial Statement Accuracy</strong>CRA verifies that your reported income, expenses, and deductions match your source documents — bank statements, invoices, receipts, and contracts.</div>
+              </li>
+              <li>
+                <div class="cei">&#128209;</div>
+                <div><strong>GAAP Compliance</strong>Auditors check whether your financial records comply with Canadian Generally Accepted Accounting Principles — proper revenue recognition, expense matching, and asset capitalization.</div>
+              </li>
+              <li>
+                <div class="cei">&#128273;</div>
+                <div><strong>Internal Controls</strong>CRA evaluates whether your business has adequate systems to prevent errors and fraud — separation of duties, approval processes, and record-keeping practices.</div>
+              </li>
+              <li>
+                <div class="cei">&#128179;</div>
+                <div><strong>Payroll &amp; Remittances</strong>Source deductions (CPP, EI, income tax withholdings), T4 accuracy, and whether remittances were made on time. Late remittances trigger automatic penalties of 3–10%.</div>
+              </li>
+              <li>
+                <div class="cei">&#127968;</div>
+                <div><strong>Personal Expense Claims</strong>Home office, vehicle, meals &amp; entertainment, and travel deductions are the most commonly challenged items. CRA wants evidence that claimed expenses are genuinely business-related.</div>
+              </li>
+              <li>
+                <div class="cei">&#128178;</div>
+                <div><strong>Shareholder Transactions</strong>Loans to/from shareholders, salary vs. dividend decisions, and management fees between related companies are closely scrutinized for reasonableness and documentation.</div>
+              </li>
+            </ul>
+          </div>
+          <div class="reveal-right">
+            <div class="cra-warning-box">
+              <h3>&#9888; Common Audit Triggers</h3>
+              <ul>
+                <li>Significant year-over-year changes in reported income or expenses</li>
+                <li>Large charitable donation claims relative to income</li>
+                <li>Claiming home office or vehicle expenses without detailed logs</li>
+                <li>Frequent GST/HST refund claims, especially in the first years of business</li>
+                <li>Cash-intensive businesses (restaurants, salons, construction)</li>
+                <li>Returns filed late or with known errors from prior years</li>
+                <li>Discrepancies between T4/T5 slips and reported income</li>
+                <li>Operating losses claimed for multiple consecutive years</li>
+                <li>Related-party transactions without documented fair market value</li>
+                <li>Tips or inconsistencies flagged by CRA's automated risk-scoring algorithms</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLETE SERVICES -->
+    <section class="sp-features-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">What We Do</span>
+          <h2 class="section-title">Complete CRA Audit &amp; Representation Services</h2>
+          <p class="section-subtitle">From the moment you receive a CRA notice to final resolution, our team handles every aspect of your audit defense.</p>
+        </div>
+        <div class="sp-features-grid">
+          <div class="sp-feature-card reveal delay-100">
+            <div class="sp-feature-icon">&#128269;</div>
+            <h3>Audit Response Management</h3>
+            <p>Complete handling of CRA desk audits, field audits, and third-party audits — including document assembly, organization, and submission. You stay entirely out of the direct CRA conversation.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-200">
+            <div class="sp-feature-icon">&#9878;</div>
+            <h3>Reassessment Appeals</h3>
+            <p>Formal objections to CRA reassessments through the Notice of Objection process and, where necessary, representation through the Tax Court of Canada to contest unreasonable assessments.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-300">
+            <div class="sp-feature-icon">&#128221;</div>
+            <h3>Voluntary Disclosure Program</h3>
+            <p>Help clients with unreported income or late-filed returns come forward through the VDP for reduced penalties and immunity from criminal prosecution — before CRA finds you first.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-100">
+            <div class="sp-feature-icon">&#129309;</div>
+            <h3>Taxpayer Relief Applications</h3>
+            <p>Applications under the Taxpayer Relief provisions to waive accumulated interest and penalties in cases of financial hardship, serious illness, natural disasters, or demonstrable CRA error.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-200">
+            <div class="sp-feature-icon">&#128179;</div>
+            <h3>Tax Debt Negotiation</h3>
+            <p>Structured payment arrangement agreements negotiated directly with CRA Collections to resolve outstanding tax balances in a financially manageable manner — preventing enforcement escalation.</p>
+          </div>
+          <div class="sp-feature-card reveal delay-300">
+            <div class="sp-feature-icon">&#128683;</div>
+            <h3>Collections Defense</h3>
+            <p>Immediate protection against CRA collections enforcement — wage garnishments, bank account freezes, and property liens — with coordinated legal and accounting response strategies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="sp-process-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">Our Audit Defense Process</h2>
+          <p class="section-subtitle">A structured, proven four-stage approach that puts your interests first at every step.</p>
+        </div>
+        <div class="sp-process-steps">
+          <div class="sp-step reveal delay-100">
+            <div class="sp-step-num">01</div>
+            <h3>Emergency Assessment</h3>
+            <p>Immediate review of your CRA notice, identification of all risk areas, and a comprehensive strategic briefing delivered within 24 hours of first contact.</p>
+          </div>
+          <div class="sp-step reveal delay-200">
+            <div class="sp-step-num">02</div>
+            <h3>Strategy &amp; Document Prep</h3>
+            <p>Complete file review, document gap analysis, CRA focus area prediction, and preparation of a tailored audit response strategy with organized evidence packages.</p>
+          </div>
+          <div class="sp-step reveal delay-300">
+            <div class="sp-step-num">03</div>
+            <h3>CRA Engagement</h3>
+            <p>All communication with CRA — every letter, phone call, document submission, and meeting — handled exclusively by our team. You are always informed, never exposed.</p>
+          </div>
+          <div class="sp-step reveal delay-400">
+            <div class="sp-step-num">04</div>
+            <h3>Resolution &amp; Prevention</h3>
+            <p>Audit closure documentation, followed by a detailed debrief and actionable recommendations to restructure your records and filings to prevent future audit triggers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY KEY METRICS -->
+    <section class="sp-why-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Why Key Metrics Accounting</span>
+          <h2 class="section-title">The Numbers Behind Our Audit Results</h2>
+          <p class="section-subtitle">Our performance metrics reflect a standard of audit defense that other firms talk about — and we consistently deliver.</p>
+        </div>
+        <div class="sp-why-grid">
+          <div class="sp-why-card reveal delay-100">
+            <div class="sp-why-num">94%</div>
+            <h3>Audits Closed Clean</h3>
+            <p>No additional tax assessed in 94% of our represented audit files — a result that speaks directly to the quality of our response strategies and document preparation.</p>
+          </div>
+          <div class="sp-why-card reveal delay-200">
+            <div class="sp-why-num">18yrs</div>
+            <h3>CRA Audit Experience</h3>
+            <p>Deep, practitioner-level knowledge of CRA audit procedures, common triggers, reassessment strategies, and internal escalation processes that most advisors never encounter.</p>
+          </div>
+          <div class="sp-why-card reveal delay-300">
+            <div class="sp-why-num">24hrs</div>
+            <h3>Response Time</h3>
+            <p>We engage immediately upon receiving your audit notice. Early intervention and a controlled first response are the most important determinants of outcome.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE RESULTS -->
+    <section class="cra-results">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Proven Results</span>
+          <h2 class="section-title">Real Audit <span class="teal-text">Outcomes</span></h2>
+          <p class="section-subtitle">Representative case summaries from our audit defense practice. Names changed for client confidentiality.</p>
+        </div>
+        <div class="cra-results-grid">
+          <div class="cra-result-card reveal delay-100">
+            <span class="cra-result-tag">Field Audit — Construction</span>
+            <h4>$380K Reassessment Reduced to $0</h4>
+            <p>CRA proposed a $380,000 reassessment against a Calgary construction company based on disputed subcontractor payments. We assembled complete documentation proving GAAP-compliant expense recognition and proper T5018 reporting.</p>
+            <div class="cra-result-outcome">&#10003; Full reassessment reversed — $0 additional tax</div>
+          </div>
+          <div class="cra-result-card reveal delay-200">
+            <span class="cra-result-tag">GST/HST Audit — E-Commerce</span>
+            <h4>$95K GST Claim Fully Defended</h4>
+            <p>An online retailer's $95,000 input tax credit claim was challenged by CRA. We provided organized evidence of legitimate business purchases, proper invoicing, and confirmed ITC eligibility across all claimed transactions.</p>
+            <div class="cra-result-outcome">&#10003; Full ITC claim approved — no adjustments</div>
+          </div>
+          <div class="cra-result-card reveal delay-300">
+            <span class="cra-result-tag">VDP — Unreported Income</span>
+            <h4>$210K Unreported Income — Zero Penalties</h4>
+            <p>A professional with $210,000 in unreported foreign income over 3 years engaged us for voluntary disclosure. We prepared and submitted a complete VDP application before CRA initiated contact — resulting in zero penalties.</p>
+            <div class="cra-result-outcome">&#10003; Penalties waived in full via VDP</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="cra-test">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Client Stories</span>
+          <h2 class="section-title">Hear From Clients We've <span class="teal-text">Protected</span></h2>
+        </div>
+        <div class="cra-test-grid">
+          <div class="cra-test-card reveal delay-100">
+            <div class="cra-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="cra-test-quote">"I was terrified when CRA came with an audit notice. The team at Key Metrics handled every single communication with total confidence. The review closed with zero adjustments. I cannot recommend them enough — they literally saved my business."</p>
+            <div class="cra-test-author">
+              <div class="cra-test-avatar">DM</div>
+              <div>
+                <div class="cra-test-name">David Morrison</div>
+                <div class="cra-test-role">Owner, Morrison Contracting Ltd.</div>
+              </div>
+            </div>
+          </div>
+          <div class="cra-test-card reveal delay-200">
+            <div class="cra-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="cra-test-quote">"I had 3 years of unreported foreign income and was losing sleep over it. Key Metrics walked me through the voluntary disclosure process, prepared everything, and got all my penalties waived. Professional, calm, and incredibly thorough."</p>
+            <div class="cra-test-author">
+              <div class="cra-test-avatar">AN</div>
+              <div>
+                <div class="cra-test-name">Anita Nguyen</div>
+                <div class="cra-test-role">Software Consultant</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAAP COMPLIANCE -->
+    <section class="cra-gaap">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Compliance</span>
+          <h2 class="section-title">GAAP Compliance &amp; <span class="teal-text">Internal Controls</span></h2>
+        </div>
+        <div class="cra-gaap-grid">
+          <div class="reveal-left">
+            <h3>We Don't Just Defend Audits — We Prevent Them</h3>
+            <p>The best audit defense starts years before a CRA notice arrives. Key Metrics Accounting helps Calgary businesses build financial systems that are audit-proof from the ground up — ensuring compliance with Canadian Generally Accepted Accounting Principles and maintaining internal controls that CRA can't challenge.</p>
+            <p>Our audit prevention services include ongoing financial statement review, internal control system assessment, and proactive guidance on the documentation practices that keep CRA at bay.</p>
+            <ul class="cra-gaap-list">
+              <li>Financial statement preparation compliant with Canadian GAAP/ASPE</li>
+              <li>Internal control system design and assessment</li>
+              <li>Revenue recognition and expense matching policies</li>
+              <li>Shareholder transaction documentation protocols</li>
+              <li>Vehicle and home office log templates and compliance checks</li>
+              <li>Annual audit-readiness review and risk scoring</li>
+              <li>CRA correspondence monitoring and flag system</li>
+            </ul>
+          </div>
+          <div class="reveal-right">
+            <div class="cra-gaap-visual">
+              <h4>&#128737; Audit Readiness Checklist</h4>
+              <div class="cra-gaap-item">
+                <div class="cra-gaap-item-icon">&#128200;</div>
+                <span class="cra-gaap-item-text">Financial statements GAAP-compliant</span>
+                <span class="cra-gaap-item-status">&#10003; Protected</span>
+              </div>
+              <div class="cra-gaap-item">
+                <div class="cra-gaap-item-icon">&#128179;</div>
+                <span class="cra-gaap-item-text">Payroll remittances current</span>
+                <span class="cra-gaap-item-status">&#10003; Protected</span>
+              </div>
+              <div class="cra-gaap-item">
+                <div class="cra-gaap-item-icon">&#129534;</div>
+                <span class="cra-gaap-item-text">GST/HST filings accurate</span>
+                <span class="cra-gaap-item-status">&#10003; Protected</span>
+              </div>
+              <div class="cra-gaap-item">
+                <div class="cra-gaap-item-icon">&#128274;</div>
+                <span class="cra-gaap-item-text">Internal controls documented</span>
+                <span class="cra-gaap-item-status">&#10003; Protected</span>
+              </div>
+              <div class="cra-gaap-item">
+                <div class="cra-gaap-item-icon">&#128230;</div>
+                <span class="cra-gaap-item-text">Receipt &amp; invoice archive complete</span>
+                <span class="cra-gaap-item-status">&#10003; Protected</span>
+              </div>
+              <div class="cra-gaap-item">
+                <div class="cra-gaap-item-icon">&#128101;</div>
+                <span class="cra-gaap-item-text">Related-party transactions documented</span>
+                <span class="cra-gaap-item-status">&#10003; Protected</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sp-faq-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title">CRA Audit Questions &amp; Answers</h2>
+          <p class="section-subtitle">Answers to the questions we hear most from clients who have just received a CRA notice.</p>
+        </div>
+        <ul class="faq-list reveal" style="max-width:800px;margin:48px auto 0;">
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What should I do if I receive a CRA audit notice?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Do not respond to CRA directly. Contact us immediately. The first response sets the tone for the entire audit, and an unguided initial response can significantly expand the scope, invite follow-up requests for additional documents, and create statements that CRA can use against you throughout the process.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What types of CRA audits do you handle?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>All types — desk audits (mail or phone review), field audits (CRA visits your business), GST/HST audits, SR&amp;ED claim reviews, transfer pricing audits, and third-party audits. We have represented clients across every industry, from sole proprietors to publicly listed corporations.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How long does a CRA audit typically take?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Desk audits typically resolve in 4–12 weeks. Field audits can take 6–18 months depending on complexity and CRA workload. Our team manages the timeline actively — submitting complete, well-organized responses that reduce back-and-forth and keep audits from dragging on unnecessarily.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What is the Voluntary Disclosure Program (VDP)?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>The VDP allows taxpayers to voluntarily correct past filing errors — including unreported income or late-filed returns — in exchange for reduced penalties and immunity from criminal prosecution. The critical requirement is that disclosure must be initiated before CRA contacts you about the issue.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can you take over a case from a previous accountant?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Yes. If you received a reassessment or are currently in the appeals process from a prior audit, we can take over at any stage. We will review all prior CRA correspondence, assess what was conceded unnecessarily, and build the strongest possible appeal — including Tax Court representation if required.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do you help with CRA collections and wage garnishments?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Yes. If CRA has already escalated to collections enforcement — wage garnishments, bank account freezes, or property liens — we intervene immediately to negotiate payment arrangements, submit Taxpayer Relief applications, and protect your assets from further enforcement action.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How much does audit representation cost?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>We offer fixed-fee packages for desk and phone audits, and hourly arrangements for complex field audits and appeals. Your initial consultation is completely free, and we'll provide a clear cost estimate before any work begins — no surprises, no hidden fees.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can you help prevent a future CRA audit?
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="faq-answer-inner">
+                <p>Absolutely. After resolving your current audit, we provide a detailed debrief with actionable recommendations — restructuring your record-keeping, fixing documentation gaps, and building internal controls that reduce your audit risk profile. We also offer annual audit-readiness reviews for ongoing clients.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sp-cta">
+      <div class="container">
+        <div class="sp-cta-inner reveal">
+          <span class="section-tag">Get Help Now</span>
+          <h2>Don't Let a CRA Audit Define Your Financial Future</h2>
+          <p>Contact us immediately upon receiving any CRA notice. Our audit team responds within 24 hours — because in a CRA audit, every hour matters.</p>
+          <div class="sp-cta-btns">
+            <a href="../contact.html" class="btn btn-teal btn-lg">Contact Our Audit Team
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="tel:+18005559999" class="btn btn-outline-dark btn-lg">Call 1-800-555-9999</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED SERVICES -->
+    <section class="sp-related">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="section-tag">Related Services</span>
+          <h2 class="section-title">You May Also Need</h2>
+        </div>
+        <div class="sp-related-grid">
+          <div class="sp-related-card reveal delay-100">
+            <div class="sp-related-icon">&#128200;</div>
+            <h4>Tax Strategy &amp; Planning</h4>
+            <p>Proactive planning that reduces audit risk in the first place — because the best audit is the one that never happens.</p>
+            <a href="tax-strategy.html" class="sp-related-link">Learn More
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="sp-related-card reveal delay-200">
+            <div class="sp-related-icon">&#128218;</div>
+            <h4>Bookkeeping &amp; Reporting</h4>
+            <p>Clean, organized books are your first line of defense against CRA scrutiny — and the foundation of any audit response.</p>
+            <a href="bookkeeping.html" class="sp-related-link">Learn More
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="sp-related-card reveal delay-300">
+            <div class="sp-related-icon">&#127970;</div>
+            <h4>Corporate Tax Filing</h4>
+            <p>T2 returns prepared to CRA audit standards from day one — clean documentation, consistent positions, and audit-ready records.</p>
+            <a href="corporate-tax.html" class="sp-related-link">Learn More
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-main"><div class="container"><div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../../index.html" class="navbar-logo"><img src="../../images/KeyMetrics.png" alt="Key Metrics Accounting logo" class="logo-img"><span class="logo-text">Key Metrics<span>Accounting</span></span></a>
+        <p>Canada's premier accounting and financial advisory firm. Expert strategy, uncompromising service.</p>
+        <div class="footer-socials"><a href="#" class="fsoc">f</a><a href="#" class="fsoc">in</a><a href="#" class="fsoc">&#10005;</a><a href="#" class="fsoc">&#9678;</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="../../index.html">Home</a></li><li><a href="../services.html">Services</a></li>
+        <li><a href="../../index.html#about">About</a></li><li><a href="../contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Our Services</h4><ul>
+        <li><a href="tax-strategy.html">Tax Strategy</a></li>
+        <li><a href="corporate-tax.html">Corporate Tax</a></li>
+        <li><a href="personal-tax.html">Personal Tax</a></li>
+        <li><a href="bookkeeping.html">Bookkeeping</a></li>
+        <li><a href="payroll.html">Payroll</a></li>
+        <li><a href="business-advisory.html">Business Advisory</a></li>
+        <li><a href="cra-audit.html">CRA Representation</a></li>
+        <li><a href="wealth-management.html">Wealth Management</a></li>
+      </ul></div>
+      <div class="footer-col footer-contact-col"><h4>Contact Us</h4>
+        <div class="fcontact-list">
+          <div class="fcontact-item"><span class="fci">&#128205;</span><div><strong>Address</strong><span>4310 104 Ave NE<br/>Calgary, AB T3J 1W5</span></div></div>
+          <div class="fcontact-item"><span class="fci">&#128222;</span><div><strong>Phone</strong><a href="tel:+18005559999">1-800-555-9999</a></div></div>
+          <div class="fcontact-item"><span class="fci">&#9993;</span><div><strong>Email</strong><a href="mailto:hello@keymetricsaccounting.ca">hello@keymetricsaccounting.ca</a></div></div>
+          <div class="fcontact-item"><span class="fci">&#128336;</span><div><strong>Hours</strong><span>Mon&ndash;Fri: 8 AM &ndash; 7 PM MST</span></div></div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container">
+      <p>&copy; 2025 Key Metrics Accounting Corp. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div></div>
+  </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">&#8593;</button>
+  <script src="../../js/main.js"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,hi,pa,zh-CN,ar,tl,ur,de,pt,ko,ja',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+    function triggerTranslate(lang) {
+      var combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        return;
+      }
+      var domain = location.hostname;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/;domain=' + domain;
+      document.cookie = 'googtrans=/en/' + lang + ';path=/';
+      location.reload();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var wrap = document.querySelector('.custom-lang');
+      var btn = document.querySelector('.custom-lang-btn');
+      var links = document.querySelectorAll('.custom-lang-dd a');
+      if (!wrap || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        wrap.classList.toggle('open');
+      });
+      document.addEventListener('click', function() { wrap.classList.remove('open'); });
+      links.forEach(function(a) {
+        a.addEventListener('click', function() {
+          var lang = a.getAttribute('data-lang');
+          triggerTranslate(lang);
+          btn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg> ' + (lang === 'zh-CN' ? 'ZH' : lang.toUpperCase());
+          wrap.classList.remove('open');
+        });
+      });
+    });
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

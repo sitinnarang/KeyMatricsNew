@@ -529,6 +529,189 @@
     });
   }
 
+  /* ================= Source Protection ================= */
+  function initSourceProtection() {
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable keyboard shortcuts for dev tools & view source
+    document.addEventListener('keydown', function(e) {
+      // F12
+      if (e.key === 'F12') { e.preventDefault(); return false; }
+      // Ctrl+Shift+I (Inspect)
+      if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
+      // Ctrl+Shift+J (Console)
+      if (e.ctrlKey && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
+      // Ctrl+Shift+C (Element picker)
+      if (e.ctrlKey && e.shiftKey && e.key === 'C') { e.preventDefault(); return false; }
+      // Ctrl+U (View Source)
+      if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.key === 'U') { e.preventDefault(); return false; }
+      // Ctrl+S (Save page)
+      if (e.ctrlKey && e.key === 's') { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.key === 'S') { e.preventDefault(); return false; }
+    });
+
+    // Disable text selection via CSS (except inputs)
+    document.body.style.userSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+    document.querySelectorAll('input, textarea').forEach(function(el) {
+      el.style.userSelect = 'text';
+      el.style.webkitUserSelect = 'text';
+    });
+
+    // Disable drag
+    document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+
+    // Debugger trap — pauses execution when dev tools open
+    (function antiDebug() {
+      var threshold = 160;
+      setInterval(function() {
+        var before = performance.now();
+        debugger;
+        var after = performance.now();
+        if (after - before > threshold) {
+          document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Poppins,sans-serif;background:#0f1923;color:#2ed1cd;font-size:1.2rem;text-align:center;padding:40px;"><div><h2 style="margin-bottom:16px;">Access Denied</h2><p style="color:#8ba8b5;">Developer tools are not permitted on this website.</p></div></div>';
+        }
+      }, 3000);
+    })();
+
+    // Disable copy (optional — keeps content protected)
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+      return false;
+    });
+  }
+
+  /* ================= AI Chat Widget ================= */
+  function initAIChat() {
+    var fab = document.getElementById('aiChatFab');
+    var win = document.getElementById('aiChatWindow');
+    var body = document.getElementById('aiChatBody');
+    var input = document.getElementById('aiChatInput');
+    var send = document.getElementById('aiChatSend');
+    var quickBtns = document.getElementById('aiQuickBtns');
+    if (!fab || !win) return;
+
+    var responses = {
+      'services': 'We offer a full range of accounting services:\n\n• <strong>Bookkeeping & Reporting</strong> — cloud-based, monthly financials\n• <strong>Payroll Processing</strong> — CRA remittances, T4s, ROEs\n• <strong>Tax Strategy & Planning</strong> — year-round optimization\n• <strong>Corporate Tax (T2)</strong> — CCPC, SR&ED credits\n• <strong>Personal Tax (T1)</strong> — max refund guarantee\n• <strong>CRA Audit Defense</strong> — full representation\n• <strong>Business Advisory</strong> — fractional CFO\n• <strong>Wealth Management</strong> — RRSP, TFSA, estate\n\nWould you like details on any specific service?',
+      'pricing': 'Our pricing is transparent with no hidden fees:\n\n• <strong>Personal Tax</strong> — from $49/return\n• <strong>Corporate Tax</strong> — from $499/return\n• <strong>Bookkeeping</strong> — from $199/month\n• <strong>Payroll</strong> — from $99/month\n\nBundle discounts available! Visit our <a href="pages/pricing.html" style="color:var(--teal-dk);font-weight:600;">Pricing page</a> for full details, or book a free consultation for a custom quote.',
+      'audit': 'If you\'ve received a CRA notice, <strong>don\'t respond to CRA directly</strong> — contact us immediately.\n\nOur audit defense includes:\n• Full CRA communication management\n• Document assembly & strategy\n• Reassessment appeals\n• Voluntary Disclosure Program\n• Tax debt negotiation\n\n<strong>94% of our audits close with zero additional tax.</strong>\n\nCall us at <a href="tel:+18005559999" style="color:var(--teal-dk);font-weight:600;">1-800-555-9999</a> for immediate help.',
+      'started': 'Getting started is easy:\n\n<strong>1.</strong> Book a <a href="pages/contact.html" style="color:var(--teal-dk);font-weight:600;">free 30-minute consultation</a>\n<strong>2.</strong> We assess your needs and recommend a plan\n<strong>3.</strong> Connect your accounts (we handle setup)\n<strong>4.</strong> You\'re up and running within 48 hours!\n\nNo commitment, no credit card required for the consultation.',
+      'hours': 'We\'re available <strong>Monday to Friday, 8 AM – 7 PM MST</strong>.\n\nYou can reach us by:\n• Phone: <a href="tel:+18005559999" style="color:var(--teal-dk);font-weight:600;">1-800-555-9999</a>\n• Email: hello@keymetricsaccounting.ca\n• Or book online at our <a href="pages/contact.html" style="color:var(--teal-dk);font-weight:600;">Contact page</a>',
+      'location': 'We\'re located at:\n\n<strong>4310 104 Ave NE\nCalgary, AB T3J 1W5</strong>\n\nBy appointment only. We also serve clients across Canada remotely.',
+      'default': 'Thanks for your question! For the most accurate answer, I\'d recommend speaking with one of our CPAs directly.\n\nYou can:\n• <a href="pages/contact.html" style="color:var(--teal-dk);font-weight:600;">Book a free consultation</a>\n• Call <a href="tel:+18005559999" style="color:var(--teal-dk);font-weight:600;">1-800-555-9999</a>\n• Email hello@keymetricsaccounting.ca\n\nIs there anything else I can help with?'
+    };
+
+    function getTime() {
+      return new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    }
+
+    function addMsg(text, type) {
+      var div = document.createElement('div');
+      div.className = 'ai-msg ' + type;
+      div.innerHTML = text.replace(/\n/g, '<br>') + '<div class="ai-msg-time">' + getTime() + '</div>';
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function showTyping() {
+      var div = document.createElement('div');
+      div.className = 'ai-typing';
+      div.id = 'aiTyping';
+      div.innerHTML = '<span></span><span></span><span></span>';
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function removeTyping() {
+      var t = document.getElementById('aiTyping');
+      if (t) t.remove();
+    }
+
+    function matchResponse(text) {
+      var q = text.toLowerCase();
+
+      // Greetings
+      if (q.match(/^(hello|hi|hey|good morning|good afternoon|good evening|howdy)/)) return 'Hello! Welcome to Key Metrics Accounting. I can help you with questions about our bookkeeping, payroll, tax, and accounting services. What would you like to know?';
+      if (q.match(/^(thank|thanks|thx|ty)/)) return 'You\'re welcome! If you have more questions about our services, feel free to ask anytime.';
+
+      // Services
+      if (q.match(/service|offer|what do you|help with|what can you/)) return responses.services;
+      if (q.match(/bookkeep|book keep|monthly report|financial statement|reconcil/)) return 'Our <strong>Bookkeeping & Reporting</strong> service includes:\n\n• Daily transaction categorization\n• Monthly P&L, balance sheet, cash flow\n• Bank & credit card reconciliation\n• QuickBooks Online / Xero\n• HST/GST tracking\n\nStarting at <strong>$199/month</strong>. Books delivered within 48 hours of month-end.\n\nVisit our <a href="pages/services/bookkeeping.html" style="color:var(--teal-dk);font-weight:600;">Bookkeeping page</a> for details.';
+      if (q.match(/payroll|t4|employee|salary|remittance|roe|direct deposit/)) return 'Our <strong>Payroll Service</strong> handles everything:\n\n• Direct deposit & pay stubs\n• CRA remittances (CPP, EI, income tax)\n• T4/T4A slip preparation\n• ROE filing\n• Multi-province compliance\n\nStarting at <strong>$99/month</strong> for 1-5 employees.\n\nVisit our <a href="pages/services/payroll.html" style="color:var(--teal-dk);font-weight:600;">Payroll page</a> for details.';
+      if (q.match(/corporate tax|t2|ccpc|small business deduction|sred|sr&ed/)) return 'Our <strong>Corporate Tax (T2)</strong> service includes:\n\n• T2 return preparation & CCPC optimization\n• Small business deduction (15% rate)\n• SR&ED credit claims\n• CCA scheduling\n• Associated corporation analysis\n\nStarting at <strong>$499/return</strong>.\n\nVisit our <a href="pages/services/corporate-tax.html" style="color:var(--teal-dk);font-weight:600;">Corporate Tax page</a> for details.';
+      if (q.match(/personal tax|t1|refund|rrsp|tfsa|deduct|self.employ/)) return 'Our <strong>Personal Tax (T1)</strong> service includes:\n\n• Full T1 preparation & NETFILE\n• RRSP/TFSA optimization\n• Rental income, investments, self-employment\n• Home office & vehicle deductions\n• Average <strong>$4,200 extra refund</strong>\n\nStarting at <strong>$49/return</strong>.\n\nVisit our <a href="pages/services/personal-tax.html" style="color:var(--teal-dk);font-weight:600;">Personal Tax page</a> for details.';
+      if (q.match(/tax strateg|tax plan|save.*tax|minimize.*tax|tax optim/)) return 'Our <strong>Tax Strategy & Planning</strong> service provides year-round proactive optimization:\n\n• Income splitting strategies\n• RRSP/TFSA contribution timing\n• Corporate structure optimization\n• Capital gains planning\n• Multi-provincial compliance\n\nClients save an average of <strong>$40,000+ in year one</strong>.\n\nVisit our <a href="pages/services/tax-strategy.html" style="color:var(--teal-dk);font-weight:600;">Tax Strategy page</a>.';
+      if (q.match(/audit|cra|notice|reassess|penalty|garnish|collection|appeal|voluntary disclosure|vdp/)) return responses.audit;
+      if (q.match(/advisory|cfo|consult|business growth|valuation|exit plan|restructur/)) return 'Our <strong>Business Advisory</strong> service includes:\n\n• Fractional CFO & Controller services\n• Financial modeling & forecasting\n• Business valuation\n• Cash flow optimization\n• Corporate structure & exit planning\n\nClients see <strong>3.2x average revenue growth</strong> within 36 months.\n\nVisit our <a href="pages/services/business-advisory.html" style="color:var(--teal-dk);font-weight:600;">Business Advisory page</a>.';
+      if (q.match(/wealth|estate|succession|investment|retirement|inherit/)) return 'Our <strong>Wealth Management</strong> service covers:\n\n• RRSP/TFSA/RESP optimization\n• Investment portfolio review\n• Retirement planning\n• Estate freeze & succession\n• Family trust structures\n\nOver <strong>$180M+ in client wealth</strong> under active advisory.\n\nVisit our <a href="pages/services/wealth-management.html" style="color:var(--teal-dk);font-weight:600;">Wealth Management page</a>.';
+
+      // Pricing
+      if (q.match(/pric|cost|how much|fee|rate|charge|quote|afford/)) return responses.pricing;
+
+      // Getting started / contact
+      if (q.match(/start|begin|sign up|onboard|get going|how do i|consult/)) return responses.started;
+      if (q.match(/contact|call|phone|email|reach|talk|speak|book|appointment|meeting/)) return responses.hours;
+      if (q.match(/address|location|where|office|visit|calgary|alberta/)) return responses.location;
+
+      // Automation
+      if (q.match(/automat|connect.*account|cloud|software|quickbooks|xero|integrate/)) return 'Our <strong>Automation Platform</strong> connects directly to your bank accounts, credit cards, and business tools to auto-categorize every transaction.\n\n• QuickBooks Online & Xero integration\n• 99.8% categorization accuracy\n• Real-time financial dashboard\n• 48-hour monthly report delivery\n\nVisit our <a href="pages/automation.html" style="color:var(--teal-dk);font-weight:600;">Automation page</a> to learn more.';
+
+      // Small business
+      if (q.match(/small business|startup|new business|incorporat|gst.*register|sole proprietor/)) return 'We specialize in <strong>small business accounting</strong> in Calgary:\n\n• Bookkeeping from $199/mo\n• GST/HST registration & filing\n• Incorporation advice\n• Payroll setup\n• Tax planning from day one\n\nOver <strong>500+ small businesses</strong> served across Alberta.\n\nVisit our <a href="pages/small-business.html" style="color:var(--teal-dk);font-weight:600;">Small Business page</a>.';
+
+      // Blog
+      if (q.match(/blog|article|read|learn|resource|insight|tip/)) return 'Check out our <strong>Blog & Insights</strong> for expert accounting tips, tax strategies, and financial guides for Canadian businesses.\n\nVisit our <a href="pages/blog.html" style="color:var(--teal-dk);font-weight:600;">Blog page</a> to browse all articles.';
+
+      // About the company
+      if (q.match(/about|who are|company|team|experience|year|history/)) return '<strong>Key Metrics Accounting</strong> has been serving Canadian businesses and individuals for over 18 years.\n\n• Based in Calgary, AB\n• 500+ businesses served\n• $2.4M+ in tax savings delivered\n• 94% CRA audit success rate\n• QuickBooks & Xero certified\n\nWe serve clients across all of Canada remotely.';
+
+      // Off-topic — politely decline
+      return 'I appreciate your question, but I can only help with topics related to <strong>Key Metrics Accounting</strong> services — bookkeeping, payroll, tax filing, CRA audits, and financial planning.\n\nHere are some things I can help with:\n• Our services & pricing\n• Getting started\n• CRA audit help\n• Contact information\n\nWould you like to know about any of these?';
+    }
+
+    function sendMessage(text) {
+      if (!text.trim()) return;
+      addMsg(text, 'user');
+      if (quickBtns) quickBtns.style.display = 'none';
+      showTyping();
+      var delay = 800 + Math.random() * 1200;
+      setTimeout(function() {
+        removeTyping();
+        addMsg(matchResponse(text), 'bot');
+      }, delay);
+    }
+
+    fab.addEventListener('click', function() {
+      fab.classList.toggle('active');
+      win.classList.toggle('open');
+    });
+
+    send.addEventListener('click', function() {
+      sendMessage(input.value);
+      input.value = '';
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage(input.value);
+        input.value = '';
+      }
+    });
+
+    if (quickBtns) {
+      quickBtns.querySelectorAll('.ai-quick-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          sendMessage(btn.getAttribute('data-q'));
+        });
+      });
+    }
+  }
+
   /* ================= Initialize Everything ================= */
   ready(() => {
     initNavbar();
@@ -547,6 +730,8 @@
     initFlipCards();
     initBlogFilter();
     initThemeSwitcher();
+    initAIChat();
+    initSourceProtection();
   });
 
 })();

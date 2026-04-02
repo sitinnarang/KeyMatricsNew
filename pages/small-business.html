@@ -1010,6 +1010,42 @@
     </div></div>
   </footer>
   <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">&#8593;</button>
+
+  <!-- AI Chat Widget -->
+  <button class="ai-chat-fab" id="aiChatFab" aria-label="Open AI chat">
+    <svg class="fab-open" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg class="fab-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+    <span class="ai-chat-badge">1</span>
+  </button>
+
+  <div class="ai-chat-window" id="aiChatWindow">
+    <div class="ai-chat-header">
+      <div class="ai-chat-avatar">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      </div>
+      <div class="ai-chat-header-text">
+        <h4>KMA Assistant</h4>
+        <p>AI-powered accounting help</p>
+      </div>
+      <div class="ai-chat-status"></div>
+    </div>
+    <div class="ai-chat-body" id="aiChatBody">
+      <div class="ai-msg bot">Hi! I'm the Key Metrics AI assistant. I can help you with questions about our accounting, bookkeeping, payroll, and tax services. How can I help you today?<div class="ai-msg-time">Just now</div></div>
+    </div>
+    <div class="ai-chat-quick" id="aiQuickBtns">
+      <button class="ai-quick-btn" data-q="What services do you offer?">Our Services</button>
+      <button class="ai-quick-btn" data-q="How much does bookkeeping cost?">Pricing</button>
+      <button class="ai-quick-btn" data-q="I need help with a CRA audit">CRA Audit Help</button>
+      <button class="ai-quick-btn" data-q="How do I get started?">Get Started</button>
+    </div>
+    <div class="ai-chat-input">
+      <input type="text" id="aiChatInput" placeholder="Type your question..." autocomplete="off" />
+      <button class="ai-chat-send" id="aiChatSend" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
   <script src="../js/main.js"></script>
   <script>
     function googleTranslateElementInit() {
